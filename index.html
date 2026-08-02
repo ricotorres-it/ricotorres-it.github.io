@@ -20,10 +20,51 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
-    /*
-     * Project card domain, icon, and module layout improvements.
-     * These styles are included here so only index.html needs updating.
-     */
+    /* =====================================================
+       PROJECT CARD LAYOUT
+    ====================================================== */
+
+    .project-grid {
+      align-items: stretch;
+    }
+
+    .project-card {
+      display: flex;
+      height: 100%;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .project-card__image {
+      display: block;
+      width: 100%;
+      flex: 0 0 auto;
+    }
+
+    .project-card__image img {
+      display: block;
+      width: 100%;
+    }
+
+    .project-card__body {
+      display: flex;
+      min-width: 0;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .project-card__body h3 {
+      margin-top: 0;
+    }
+
+    .project-card__body > p:not(.project-card__domain) {
+      margin-bottom: 18px;
+    }
+
+    /* =====================================================
+       PROJECT ICON AND DOMAIN
+    ====================================================== */
 
     .project-card__meta {
       display: flex;
@@ -38,9 +79,9 @@
 
     .project-card__icon {
       display: inline-flex;
-      flex: 0 0 42px;
       width: 42px;
       height: 42px;
+      flex: 0 0 42px;
       align-items: center;
       justify-content: center;
       border-radius: 12px;
@@ -96,6 +137,38 @@
       overflow-wrap: anywhere;
     }
 
+    /* =====================================================
+       PROJECT TECHNOLOGY BADGES
+    ====================================================== */
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .project-tags span {
+      display: inline-flex;
+      min-height: 32px;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border: 1px solid #cfe0ff;
+      border-radius: 999px;
+      background: #f1f6ff;
+      color: #075fd8;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* =====================================================
+       GLPI MODULE GRID
+    ====================================================== */
+
     .module-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -110,6 +183,10 @@
       line-height: 1.55;
     }
 
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
     @media (max-width: 1080px) {
       .module-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -122,14 +199,20 @@
       }
 
       .project-card__icon {
-        flex-basis: 38px;
         width: 38px;
         height: 38px;
+        flex-basis: 38px;
       }
 
       .project-card__icon svg {
         width: 20px;
         height: 20px;
+      }
+
+      .project-tags span {
+        min-height: 30px;
+        padding: 6px 10px;
+        font-size: 11px;
       }
     }
   </style>
@@ -210,7 +293,7 @@
           <div class="hero__content">
 
             <p class="eyebrow">
-              IT operations • Infrastructure • Automation
+              IT Operations • Infrastructure • Automation
             </p>
 
             <h1>Rico Torres</h1>
@@ -258,7 +341,7 @@
                 GitHub
               </a>
 
-              <!-- Replace # with your real LinkedIn profile URL. -->
+              <!-- Replace # with your actual LinkedIn profile URL. -->
               <a
                 class="button button--light button--placeholder"
                 id="linkedin-link"
@@ -546,7 +629,7 @@
 
           <div>
             <p class="eyebrow eyebrow--dark">
-              Selected work
+              Selected Work
             </p>
 
             <h2>Projects</h2>
@@ -592,6 +675,7 @@
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 24 24">
+
                     <rect
                       x="4"
                       y="3"
@@ -611,10 +695,12 @@
                     <path
                       d="M8 6h.01M8 18h.01M12 6h5M12 18h5"
                     ></path>
+
                   </svg>
                 </span>
 
                 <div>
+
                   <span class="project-card__label">
                     IT Management Platform
                   </span>
@@ -622,6 +708,7 @@
                   <p class="project-card__domain">
                     inventory.primeview.com
                   </p>
+
                 </div>
 
               </div>
@@ -673,6 +760,7 @@
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 24 24">
+
                     <path
                       d="M12 3 19 6v5c0 4.8-3 8.2-7 10-4-1.8-7-5.2-7-10V6l7-3Z"
                     ></path>
@@ -680,10 +768,12 @@
                     <path
                       d="M9 12h6M12 9v6"
                     ></path>
+
                   </svg>
                 </span>
 
                 <div>
+
                   <span class="project-card__label">
                     Administration Portal
                   </span>
@@ -691,6 +781,7 @@
                   <p class="project-card__domain">
                     admin.primeview.com
                   </p>
+
                 </div>
 
               </div>
@@ -708,7 +799,7 @@
               <div class="project-tags">
                 <span>PHP</span>
                 <span>MySQL</span>
-                <span>Administration</span>
+                <span>HR Administration</span>
                 <span>Payroll</span>
               </div>
 
@@ -742,6 +833,7 @@
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 24 24">
+
                     <circle
                       cx="9"
                       cy="8"
@@ -761,10 +853,12 @@
                     <path
                       d="M14 15c3.5-.5 5.5 1.2 6 4"
                     ></path>
+
                   </svg>
                 </span>
 
                 <div>
+
                   <span class="project-card__label">
                     Employee Self-Service
                   </span>
@@ -772,6 +866,7 @@
                   <p class="project-card__domain">
                     hub.primeview.com
                   </p>
+
                 </div>
 
               </div>
@@ -790,7 +885,7 @@
                 <span>PHP</span>
                 <span>MySQL</span>
                 <span>Employee Portal</span>
-                <span>HR Operations</span>
+                <span>Self-Service</span>
               </div>
 
             </div>
@@ -823,6 +918,7 @@
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 24 24">
+
                     <path
                       d="M4 13v-2a8 8 0 0 1 16 0v2"
                     ></path>
@@ -838,10 +934,12 @@
                     <path
                       d="M17 18c-1 2-3 3-5 3"
                     ></path>
+
                   </svg>
                 </span>
 
                 <div>
+
                   <span class="project-card__label">
                     Client Support Platform
                   </span>
@@ -849,6 +947,7 @@
                   <p class="project-card__domain">
                     clientportal.primeview.com
                   </p>
+
                 </div>
 
               </div>
@@ -866,8 +965,8 @@
               <div class="project-tags">
                 <span>GLPI 11</span>
                 <span>PHP</span>
-                <span>CSS</span>
-                <span>Client Support</span>
+                <span>Support Portal</span>
+                <span>Ticketing</span>
               </div>
 
             </div>
@@ -887,13 +986,15 @@
         <div class="section-heading">
 
           <div>
+
             <p class="eyebrow eyebrow--dark">
-              Extended platform
+              Extended Platform
             </p>
 
             <h2>
               Additional GLPI Modules & Integrations
             </h2>
+
           </div>
 
           <p>
@@ -906,6 +1007,7 @@
         <div class="module-grid">
 
           <article class="module-card">
+
             <span>◎</span>
 
             <h3>Domain Manager</h3>
@@ -915,9 +1017,11 @@
               PHP versions, plugin inventory, activity logs,
               backend access, and reporting.
             </p>
+
           </article>
 
           <article class="module-card">
+
             <span>▣</span>
 
             <h3>IT Monitoring</h3>
@@ -927,9 +1031,11 @@
               endpoint-security information, operational records,
               warnings, and critical alerts.
             </p>
+
           </article>
 
           <article class="module-card">
+
             <span>✓</span>
 
             <h3>Monthly IT Check</h3>
@@ -939,9 +1045,11 @@
               imports, employee-device mapping, completion tracking,
               and health-status reporting.
             </p>
+
           </article>
 
           <article class="module-card">
+
             <span>♙</span>
 
             <h3>PrimeView IAM</h3>
@@ -951,9 +1059,11 @@
               restricted page access, sidebar-menu filtering,
               and centralized access management.
             </p>
+
           </article>
 
           <article class="module-card">
+
             <span>▤</span>
 
             <h3>Company Subscription</h3>
@@ -963,9 +1073,11 @@
               due-date monitoring, overdue tracking, payment
               history, reports, and Slack alerts.
             </p>
+
           </article>
 
           <article class="module-card">
+
             <span>◇</span>
 
             <h3>Bitdefender Users</h3>
@@ -975,9 +1087,11 @@
               CSV imports, employee-device mapping, and monthly
               IT-check integration.
             </p>
+
           </article>
 
           <article class="module-card">
+
             <span>🔑</span>
 
             <h3>Backend Access</h3>
@@ -987,9 +1101,11 @@
               access records connected to managed websites
               and domain inventory.
             </p>
+
           </article>
 
           <article class="module-card">
+
             <span>▦</span>
 
             <h3>Servers & Health Records</h3>
@@ -999,9 +1115,11 @@
               backup status, service monitoring, alerts, and
               historical health records.
             </p>
+
           </article>
 
           <article class="module-card">
+
             <span>W</span>
 
             <h3>WordPress Inventory Agent</h3>
@@ -1011,6 +1129,7 @@
               and plugin-version information collected through
               a secured REST API.
             </p>
+
           </article>
 
         </div>
@@ -1061,7 +1180,7 @@
     </section>
 
     <!-- ======================================================
-         EXPERIENCE
+         EXPERIENCE AND CERTIFICATIONS
     ======================================================= -->
 
     <section class="section-shell" id="experience">
@@ -1072,11 +1191,13 @@
           <div class="section-heading section-heading--compact">
 
             <div>
+
               <p class="eyebrow eyebrow--dark">
                 Career
               </p>
 
               <h2>Work Experience</h2>
+
             </div>
 
           </div>
@@ -1098,6 +1219,7 @@
               </p>
 
               <ul>
+
                 <li>
                   Administer web-hosting and WordPress environments.
                 </li>
@@ -1111,6 +1233,7 @@
                   Develop automation, GLPI customizations,
                   dashboards, integrations, and internal portals.
                 </li>
+
               </ul>
 
             </section>
@@ -1130,6 +1253,7 @@
               </p>
 
               <ul>
+
                 <li>
                   Resolved more than 50 support tickets daily.
                 </li>
@@ -1137,6 +1261,7 @@
                 <li>
                   Maintained an 85–90% first-contact resolution rate.
                 </li>
+
               </ul>
 
             </section>
@@ -1156,6 +1281,7 @@
               </p>
 
               <ul>
+
                 <li>
                   Maintained more than 99% data accuracy.
                 </li>
@@ -1163,16 +1289,13 @@
                 <li>
                   Improved Excel workflows by approximately 20%.
                 </li>
+
               </ul>
 
             </section>
 
           </div>
         </article>
-
-        <!-- ==================================================
-             EDUCATION AND CERTIFICATIONS
-        =================================================== -->
 
         <article
           class="panel section-card"
@@ -1182,11 +1305,13 @@
           <div class="section-heading section-heading--compact">
 
             <div>
+
               <p class="eyebrow eyebrow--dark">
                 Training
               </p>
 
               <h2>Education & Certifications</h2>
+
             </div>
 
           </div>
@@ -1214,6 +1339,7 @@
               <span>MS</span>
 
               <div>
+
                 <h3>
                   Microsoft Office Specialist: Excel
                 </h3>
@@ -1221,6 +1347,7 @@
                 <p>
                   Microsoft • May 2025
                 </p>
+
               </div>
 
             </article>
@@ -1230,6 +1357,7 @@
               <span>C</span>
 
               <div>
+
                 <h3>
                   Introduction to Cybersecurity
                 </h3>
@@ -1237,6 +1365,7 @@
                 <p>
                   Cisco Networking Academy • March 2026
                 </p>
+
               </div>
 
             </article>
@@ -1246,6 +1375,7 @@
               <span>C</span>
 
               <div>
+
                 <h3>
                   Networking Basics
                 </h3>
@@ -1253,6 +1383,7 @@
                 <p>
                   Cisco Networking Academy • April 2026
                 </p>
+
               </div>
 
             </article>
@@ -1262,6 +1393,7 @@
               <span>T</span>
 
               <div>
+
                 <h3>
                   Computer Systems, Networks & Servers
                 </h3>
@@ -1269,6 +1401,7 @@
                 <p>
                   TESDA • 2023–2026
                 </p>
+
               </div>
 
             </article>
@@ -1299,7 +1432,7 @@
         <div>
 
           <p class="eyebrow">
-            Open to opportunities
+            Open to Opportunities
           </p>
 
           <h2>Let's Connect</h2>
