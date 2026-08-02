@@ -10,7 +10,7 @@
 
   <meta
     name="description"
-    content="Rico Torres — Junior System Administrator portfolio featuring Linux, WordPress, GLPI, web hosting, IT automation, and technical support projects."
+    content="Rico Torres — Junior System Administrator portfolio featuring Linux, WordPress, GLPI, web hosting, IT automation, server monitoring, and technical support projects."
   >
 
   <meta name="theme-color" content="#0b2f68">
@@ -19,14 +19,80 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- Page-specific layout improvements -->
   <style>
-    .project-card__domain {
-      margin: 0 0 7px;
-      color: var(--blue);
-      font-size: 11px;
+    /*
+     * Project card domain, icon, and module layout improvements.
+     * These styles are included here so only index.html needs updating.
+     */
+
+    .project-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 15px;
+    }
+
+    .project-card__meta > div {
+      min-width: 0;
+    }
+
+    .project-card__icon {
+      display: inline-flex;
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+
+    .project-card__icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .project-card__icon--blue {
+      color: #1769e8;
+      background: #eaf2ff;
+    }
+
+    .project-card__icon--purple {
+      color: #7c3aed;
+      background: #f1eafe;
+    }
+
+    .project-card__icon--green {
+      color: #169c58;
+      background: #e8f8ef;
+    }
+
+    .project-card__icon--cyan {
+      color: #0785b8;
+      background: #e7f7fc;
+    }
+
+    .project-card__label {
+      display: block;
+      margin-bottom: 2px;
+      color: #64748b;
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.07em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .project-card__domain {
+      margin: 0;
+      color: #175cd3;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.35;
       overflow-wrap: anywhere;
     }
 
@@ -35,7 +101,7 @@
     }
 
     .module-card {
-      min-height: 175px;
+      min-height: 185px;
       padding: 22px 18px;
     }
 
@@ -53,6 +119,17 @@
     @media (max-width: 760px) {
       .module-grid {
         grid-template-columns: 1fr;
+      }
+
+      .project-card__icon {
+        flex-basis: 38px;
+        width: 38px;
+        height: 38px;
+      }
+
+      .project-card__icon svg {
+        width: 20px;
+        height: 20px;
       }
     }
   </style>
@@ -181,6 +258,7 @@
                 GitHub
               </a>
 
+              <!-- Replace # with your real LinkedIn profile URL. -->
               <a
                 class="button button--light button--placeholder"
                 id="linkedin-link"
@@ -487,7 +565,9 @@
 
         <div class="project-grid">
 
-          <!-- PROJECT 1: PRIMEVIEW GLPI -->
+          <!-- ==================================================
+               PROJECT 1: PRIMEVIEW GLPI
+          =================================================== -->
 
           <article class="project-card reveal">
 
@@ -505,9 +585,46 @@
 
             <div class="project-card__body">
 
-              <p class="project-card__domain">
-                inventory.primeview.com
-              </p>
+              <div class="project-card__meta">
+
+                <span
+                  class="project-card__icon project-card__icon--blue"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 24 24">
+                    <rect
+                      x="4"
+                      y="3"
+                      width="16"
+                      height="6"
+                      rx="2"
+                    ></rect>
+
+                    <rect
+                      x="4"
+                      y="15"
+                      width="16"
+                      height="6"
+                      rx="2"
+                    ></rect>
+
+                    <path
+                      d="M8 6h.01M8 18h.01M12 6h5M12 18h5"
+                    ></path>
+                  </svg>
+                </span>
+
+                <div>
+                  <span class="project-card__label">
+                    IT Management Platform
+                  </span>
+
+                  <p class="project-card__domain">
+                    inventory.primeview.com
+                  </p>
+                </div>
+
+              </div>
 
               <h3>
                 PrimeView GLPI IT Management System
@@ -529,7 +646,9 @@
             </div>
           </article>
 
-          <!-- PROJECT 2: ADMIN HUB -->
+          <!-- ==================================================
+               PROJECT 2: ADMIN HUB
+          =================================================== -->
 
           <article class="project-card reveal">
 
@@ -547,9 +666,34 @@
 
             <div class="project-card__body">
 
-              <p class="project-card__domain">
-                admin.primeview.com
-              </p>
+              <div class="project-card__meta">
+
+                <span
+                  class="project-card__icon project-card__icon--purple"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 3 19 6v5c0 4.8-3 8.2-7 10-4-1.8-7-5.2-7-10V6l7-3Z"
+                    ></path>
+
+                    <path
+                      d="M9 12h6M12 9v6"
+                    ></path>
+                  </svg>
+                </span>
+
+                <div>
+                  <span class="project-card__label">
+                    Administration Portal
+                  </span>
+
+                  <p class="project-card__domain">
+                    admin.primeview.com
+                  </p>
+                </div>
+
+              </div>
 
               <h3>
                 PrimeView Admin Hub
@@ -571,7 +715,9 @@
             </div>
           </article>
 
-          <!-- PROJECT 3: EMPLOYEE HUB -->
+          <!-- ==================================================
+               PROJECT 3: EMPLOYEE HUB
+          =================================================== -->
 
           <article class="project-card reveal">
 
@@ -589,9 +735,46 @@
 
             <div class="project-card__body">
 
-              <p class="project-card__domain">
-                hub.primeview.com
-              </p>
+              <div class="project-card__meta">
+
+                <span
+                  class="project-card__icon project-card__icon--green"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 24 24">
+                    <circle
+                      cx="9"
+                      cy="8"
+                      r="3"
+                    ></circle>
+
+                    <circle
+                      cx="17"
+                      cy="9"
+                      r="2"
+                    ></circle>
+
+                    <path
+                      d="M3.5 20c.5-4 2.5-6 5.5-6s5 2 5.5 6"
+                    ></path>
+
+                    <path
+                      d="M14 15c3.5-.5 5.5 1.2 6 4"
+                    ></path>
+                  </svg>
+                </span>
+
+                <div>
+                  <span class="project-card__label">
+                    Employee Self-Service
+                  </span>
+
+                  <p class="project-card__domain">
+                    hub.primeview.com
+                  </p>
+                </div>
+
+              </div>
 
               <h3>
                 PrimeView Employee Hub
@@ -613,7 +796,9 @@
             </div>
           </article>
 
-          <!-- PROJECT 4: CLIENT SUPPORT PORTAL -->
+          <!-- ==================================================
+               PROJECT 4: CLIENT SUPPORT PORTAL
+          =================================================== -->
 
           <article class="project-card reveal">
 
@@ -631,9 +816,42 @@
 
             <div class="project-card__body">
 
-              <p class="project-card__domain">
-                clientportal.primeview.com
-              </p>
+              <div class="project-card__meta">
+
+                <span
+                  class="project-card__icon project-card__icon--cyan"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M4 13v-2a8 8 0 0 1 16 0v2"
+                    ></path>
+
+                    <path
+                      d="M4 13a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2v-2Z"
+                    ></path>
+
+                    <path
+                      d="M20 13a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2Z"
+                    ></path>
+
+                    <path
+                      d="M17 18c-1 2-3 3-5 3"
+                    ></path>
+                  </svg>
+                </span>
+
+                <div>
+                  <span class="project-card__label">
+                    Client Support Platform
+                  </span>
+
+                  <p class="project-card__domain">
+                    clientportal.primeview.com
+                  </p>
+                </div>
+
+              </div>
 
               <h3>
                 PrimeView Client Support Portal
@@ -843,7 +1061,7 @@
     </section>
 
     <!-- ======================================================
-         EXPERIENCE AND CERTIFICATIONS
+         EXPERIENCE
     ======================================================= -->
 
     <section class="section-shell" id="experience">
@@ -852,6 +1070,7 @@
         <article class="panel section-card">
 
           <div class="section-heading section-heading--compact">
+
             <div>
               <p class="eyebrow eyebrow--dark">
                 Career
@@ -859,6 +1078,7 @@
 
               <h2>Work Experience</h2>
             </div>
+
           </div>
 
           <div class="timeline">
@@ -950,12 +1170,17 @@
           </div>
         </article>
 
+        <!-- ==================================================
+             EDUCATION AND CERTIFICATIONS
+        =================================================== -->
+
         <article
           class="panel section-card"
           id="certifications"
         >
 
           <div class="section-heading section-heading--compact">
+
             <div>
               <p class="eyebrow eyebrow--dark">
                 Training
@@ -963,6 +1188,7 @@
 
               <h2>Education & Certifications</h2>
             </div>
+
           </div>
 
           <div class="education-card">
@@ -984,6 +1210,7 @@
           <div class="cert-list">
 
             <article>
+
               <span>MS</span>
 
               <div>
@@ -995,9 +1222,11 @@
                   Microsoft • May 2025
                 </p>
               </div>
+
             </article>
 
             <article>
+
               <span>C</span>
 
               <div>
@@ -1009,9 +1238,11 @@
                   Cisco Networking Academy • March 2026
                 </p>
               </div>
+
             </article>
 
             <article>
+
               <span>C</span>
 
               <div>
@@ -1023,9 +1254,11 @@
                   Cisco Networking Academy • April 2026
                 </p>
               </div>
+
             </article>
 
             <article>
+
               <span>T</span>
 
               <div>
@@ -1037,6 +1270,7 @@
                   TESDA • 2023–2026
                 </p>
               </div>
+
             </article>
 
           </div>
@@ -1051,6 +1285,7 @@
           </a>
 
         </article>
+
       </div>
     </section>
 
@@ -1095,6 +1330,7 @@
           </span>
 
         </div>
+
       </div>
     </section>
 
@@ -1119,7 +1355,7 @@
   </footer>
 
   <!-- ======================================================
-       PROJECT IMAGE LIGHTBOX
+       IMAGE LIGHTBOX
   ======================================================= -->
 
   <dialog
@@ -1142,6 +1378,10 @@
     >
 
   </dialog>
+
+  <!-- ======================================================
+       LINKEDIN PLACEHOLDER MESSAGE
+  ======================================================= -->
 
   <div
     class="toast"
