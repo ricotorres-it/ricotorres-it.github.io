@@ -21,7 +21,7 @@
 
   <style>
     /* =====================================================
-       PROJECT CARD LAYOUT
+       PROJECT CARDS
     ====================================================== */
 
     .project-grid {
@@ -39,7 +39,9 @@
     .project-card__image {
       display: block;
       width: 100%;
-      flex: 0 0 auto;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
     }
 
     .project-card__image img {
@@ -58,19 +60,19 @@
       margin-top: 0;
     }
 
-    .project-card__body > p:not(.project-card__domain) {
+    .project-card__description {
       margin-bottom: 18px;
     }
 
     /* =====================================================
-       PROJECT ICON AND DOMAIN
+       PROJECT ICONS AND DOMAINS
     ====================================================== */
 
     .project-card__meta {
       display: flex;
       align-items: center;
-      gap: 11px;
-      margin-bottom: 15px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
     .project-card__meta > div {
@@ -79,17 +81,18 @@
 
     .project-card__icon {
       display: inline-flex;
-      width: 42px;
-      height: 42px;
-      flex: 0 0 42px;
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
+      border: 1px solid transparent;
+      border-radius: 14px;
     }
 
     .project-card__icon svg {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       fill: none;
       stroke: currentColor;
       stroke-width: 1.8;
@@ -99,27 +102,31 @@
 
     .project-card__icon--blue {
       color: #1769e8;
+      border-color: #cfe0ff;
       background: #eaf2ff;
     }
 
     .project-card__icon--purple {
       color: #7c3aed;
-      background: #f1eafe;
+      border-color: #ddd0fc;
+      background: #f2edff;
     }
 
     .project-card__icon--green {
       color: #169c58;
-      background: #e8f8ef;
+      border-color: #c9edd8;
+      background: #eaf8f0;
     }
 
     .project-card__icon--cyan {
       color: #0785b8;
-      background: #e7f7fc;
+      border-color: #c7eaf5;
+      background: #e8f8fc;
     }
 
     .project-card__label {
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
       color: #64748b;
       font-size: 10px;
       font-weight: 800;
@@ -138,7 +145,7 @@
     }
 
     /* =====================================================
-       PROJECT TECHNOLOGY BADGES
+       TECHNOLOGY BADGES
     ====================================================== */
 
     .project-tags {
@@ -166,21 +173,101 @@
     }
 
     /* =====================================================
-       GLPI MODULE GRID
+       GLPI MODULE CARDS
     ====================================================== */
 
     .module-grid {
+      display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .module-card {
-      min-height: 185px;
-      padding: 22px 18px;
+      display: flex;
+      min-height: 205px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 22px;
+      border: 1px solid #d9e4f2;
+      border-radius: 18px;
+      background: #ffffff;
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      border-color: #b9d2f5;
+      box-shadow: 0 16px 35px rgba(15, 53, 105, 0.1);
+    }
+
+    .module-card__icon {
+      display: inline-flex;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 17px;
+      border: 1px solid #d7e5fb;
+      border-radius: 14px;
+      background: #edf4ff;
+      color: #1769e8;
+    }
+
+    .module-card__icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .module-card h3 {
+      margin: 0 0 9px;
+      color: #08234a;
+      font-size: 16px;
+      line-height: 1.35;
     }
 
     .module-card p {
+      margin: 0;
+      color: #5c6f8b;
       font-size: 12px;
-      line-height: 1.55;
+      line-height: 1.65;
+    }
+
+    .module-card--purple .module-card__icon {
+      color: #7c3aed;
+      border-color: #ddd0fc;
+      background: #f2edff;
+    }
+
+    .module-card--green .module-card__icon {
+      color: #169c58;
+      border-color: #caecd8;
+      background: #eaf8f0;
+    }
+
+    .module-card--orange .module-card__icon {
+      color: #e87618;
+      border-color: #f6dcc4;
+      background: #fff4e9;
+    }
+
+    .module-card--cyan .module-card__icon {
+      color: #0785b8;
+      border-color: #c7eaf5;
+      background: #e8f8fc;
+    }
+
+    .module-card--red .module-card__icon {
+      color: #dc3545;
+      border-color: #f2ccd0;
+      background: #fff0f1;
     }
 
     /* =====================================================
@@ -199,14 +286,15 @@
       }
 
       .project-card__icon {
-        width: 38px;
-        height: 38px;
-        flex-basis: 38px;
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+        border-radius: 12px;
       }
 
       .project-card__icon svg {
-        width: 20px;
-        height: 20px;
+        width: 21px;
+        height: 21px;
       }
 
       .project-tags span {
@@ -341,7 +429,6 @@
                 GitHub
               </a>
 
-              <!-- Replace # with your actual LinkedIn profile URL. -->
               <a
                 class="button button--light button--placeholder"
                 id="linkedin-link"
@@ -367,7 +454,7 @@
             class="hero__illustration"
             aria-hidden="true"
           >
-            <svg viewBox="0 0 320 250" role="img">
+            <svg viewBox="0 0 320 250">
 
               <defs>
                 <linearGradient id="heroLine" x1="0" x2="1">
@@ -648,9 +735,7 @@
 
         <div class="project-grid">
 
-          <!-- ==================================================
-               PROJECT 1: PRIMEVIEW GLPI
-          =================================================== -->
+          <!-- PRIMEVIEW GLPI -->
 
           <article class="project-card reveal">
 
@@ -675,32 +760,13 @@
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 24 24">
-
-                    <rect
-                      x="4"
-                      y="3"
-                      width="16"
-                      height="6"
-                      rx="2"
-                    ></rect>
-
-                    <rect
-                      x="4"
-                      y="15"
-                      width="16"
-                      height="6"
-                      rx="2"
-                    ></rect>
-
-                    <path
-                      d="M8 6h.01M8 18h.01M12 6h5M12 18h5"
-                    ></path>
-
+                    <rect x="3" y="3" width="18" height="7" rx="2"></rect>
+                    <rect x="3" y="14" width="18" height="7" rx="2"></rect>
+                    <path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"></path>
                   </svg>
                 </span>
 
                 <div>
-
                   <span class="project-card__label">
                     IT Management Platform
                   </span>
@@ -708,16 +774,13 @@
                   <p class="project-card__domain">
                     inventory.primeview.com
                   </p>
-
                 </div>
 
               </div>
 
-              <h3>
-                PrimeView GLPI IT Management System
-              </h3>
+              <h3>PrimeView GLPI IT Management System</h3>
 
-              <p>
+              <p class="project-card__description">
                 Centralized platform for IT assets, support tickets,
                 server monitoring, backups, website inventory,
                 security records, and operational reports.
@@ -733,9 +796,7 @@
             </div>
           </article>
 
-          <!-- ==================================================
-               PROJECT 2: ADMIN HUB
-          =================================================== -->
+          <!-- ADMIN HUB -->
 
           <article class="project-card reveal">
 
@@ -760,20 +821,13 @@
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 24 24">
-
-                    <path
-                      d="M12 3 19 6v5c0 4.8-3 8.2-7 10-4-1.8-7-5.2-7-10V6l7-3Z"
-                    ></path>
-
-                    <path
-                      d="M9 12h6M12 9v6"
-                    ></path>
-
+                    <circle cx="12" cy="8" r="3"></circle>
+                    <path d="M6 20v-2a6 6 0 0 1 12 0v2"></path>
+                    <path d="M18 5h3M19.5 3.5v3"></path>
                   </svg>
                 </span>
 
                 <div>
-
                   <span class="project-card__label">
                     Administration Portal
                   </span>
@@ -781,16 +835,13 @@
                   <p class="project-card__domain">
                     admin.primeview.com
                   </p>
-
                 </div>
 
               </div>
 
-              <h3>
-                PrimeView Admin Hub
-              </h3>
+              <h3>PrimeView Admin Hub</h3>
 
-              <p>
+              <p class="project-card__description">
                 Administration portal for employee management,
                 timekeeping, leave approvals, payroll workflows,
                 payslips, documents, announcements, and reports.
@@ -806,9 +857,7 @@
             </div>
           </article>
 
-          <!-- ==================================================
-               PROJECT 3: EMPLOYEE HUB
-          =================================================== -->
+          <!-- EMPLOYEE HUB -->
 
           <article class="project-card reveal">
 
@@ -833,32 +882,13 @@
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 24 24">
-
-                    <circle
-                      cx="9"
-                      cy="8"
-                      r="3"
-                    ></circle>
-
-                    <circle
-                      cx="17"
-                      cy="9"
-                      r="2"
-                    ></circle>
-
-                    <path
-                      d="M3.5 20c.5-4 2.5-6 5.5-6s5 2 5.5 6"
-                    ></path>
-
-                    <path
-                      d="M14 15c3.5-.5 5.5 1.2 6 4"
-                    ></path>
-
+                    <rect x="4" y="3" width="16" height="18" rx="3"></rect>
+                    <circle cx="12" cy="9" r="3"></circle>
+                    <path d="M7.5 18c.6-2.6 2.1-4 4.5-4s3.9 1.4 4.5 4"></path>
                   </svg>
                 </span>
 
                 <div>
-
                   <span class="project-card__label">
                     Employee Self-Service
                   </span>
@@ -866,16 +896,13 @@
                   <p class="project-card__domain">
                     hub.primeview.com
                   </p>
-
                 </div>
 
               </div>
 
-              <h3>
-                PrimeView Employee Hub
-              </h3>
+              <h3>PrimeView Employee Hub</h3>
 
-              <p>
+              <p class="project-card__description">
                 Employee self-service portal for time records,
                 leave requests, payslips, announcements, employee
                 profiles, activity updates, and internal requests.
@@ -891,9 +918,7 @@
             </div>
           </article>
 
-          <!-- ==================================================
-               PROJECT 4: CLIENT SUPPORT PORTAL
-          =================================================== -->
+          <!-- CLIENT SUPPORT PORTAL -->
 
           <article class="project-card reveal">
 
@@ -918,28 +943,14 @@
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 24 24">
-
-                    <path
-                      d="M4 13v-2a8 8 0 0 1 16 0v2"
-                    ></path>
-
-                    <path
-                      d="M4 13a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2v-2Z"
-                    ></path>
-
-                    <path
-                      d="M20 13a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2Z"
-                    ></path>
-
-                    <path
-                      d="M17 18c-1 2-3 3-5 3"
-                    ></path>
-
+                    <path d="M4 13v-2a8 8 0 0 1 16 0v2"></path>
+                    <path d="M4 13a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2v-2Z"></path>
+                    <path d="M20 13a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2Z"></path>
+                    <path d="M17 18c-1 2-3 3-5 3h-1"></path>
                   </svg>
                 </span>
 
                 <div>
-
                   <span class="project-card__label">
                     Client Support Platform
                   </span>
@@ -947,16 +958,13 @@
                   <p class="project-card__domain">
                     clientportal.primeview.com
                   </p>
-
                 </div>
 
               </div>
 
-              <h3>
-                PrimeView Client Support Portal
-              </h3>
+              <h3>PrimeView Client Support Portal</h3>
 
-              <p>
+              <p class="project-card__description">
                 Client-facing support portal for reporting issues,
                 requesting services, submitting inquiries, and
                 tracking support tickets.
@@ -986,7 +994,6 @@
         <div class="section-heading">
 
           <div>
-
             <p class="eyebrow eyebrow--dark">
               Extended Platform
             </p>
@@ -994,7 +1001,6 @@
             <h2>
               Additional GLPI Modules & Integrations
             </h2>
-
           </div>
 
           <p>
@@ -1006,128 +1012,185 @@
 
         <div class="module-grid">
 
+          <!-- DOMAIN MANAGER -->
+
           <article class="module-card">
 
-            <span>◎</span>
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9M12 3c-3 3-4 6-4 9s1 6 4 9"></path>
+              </svg>
+            </span>
 
             <h3>Domain Manager</h3>
 
             <p>
-              Domains, SSL monitoring, WordPress versions,
-              PHP versions, plugin inventory, activity logs,
-              backend access, and reporting.
+              Domains, SSL monitoring, WordPress versions, PHP versions,
+              plugin inventory, activity logs, backend access, and reporting.
             </p>
 
           </article>
 
-          <article class="module-card">
+          <!-- IT MONITORING -->
 
-            <span>▣</span>
+          <article class="module-card module-card--cyan">
+
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+                <path d="M8 21h8M12 17v4M6 11h3l2-4 3 8 2-4h2"></path>
+              </svg>
+            </span>
 
             <h3>IT Monitoring</h3>
 
             <p>
-              Server health, backups, WFH speed tests,
-              endpoint-security information, operational records,
-              warnings, and critical alerts.
+              Server health, backups, WFH speed tests, endpoint-security
+              information, operational records, warnings, and critical alerts.
             </p>
 
           </article>
 
-          <article class="module-card">
+          <!-- MONTHLY IT CHECK -->
 
-            <span>✓</span>
+          <article class="module-card module-card--green">
+
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="3" width="16" height="18" rx="2"></rect>
+                <path d="M8 8h8M8 12h4M8 16h3M15 15l2 2 3-4"></path>
+              </svg>
+            </span>
 
             <h3>Monthly IT Check</h3>
 
             <p>
-              Automated workstation inspections, monthly report
-              imports, employee-device mapping, completion tracking,
-              and health-status reporting.
+              Automated workstation inspections, report imports,
+              employee-device mapping, completion tracking, and
+              healthy, warning, or critical statuses.
             </p>
 
           </article>
 
-          <article class="module-card">
+          <!-- PRIMEVIEW IAM -->
 
-            <span>♙</span>
+          <article class="module-card module-card--purple">
+
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3 19 6v5c0 4.8-3 8.2-7 10-4-1.8-7-5.2-7-10V6l7-3Z"></path>
+                <path d="M9 12l2 2 4-5"></path>
+              </svg>
+            </span>
 
             <h3>PrimeView IAM</h3>
 
             <p>
-              Role-based permissions, direct URL protection,
-              restricted page access, sidebar-menu filtering,
-              and centralized access management.
+              Role-based permissions, direct URL protection, restricted
+              page access, sidebar filtering, and centralized access control.
             </p>
 
           </article>
 
-          <article class="module-card">
+          <!-- COMPANY SUBSCRIPTION -->
 
-            <span>▤</span>
+          <article class="module-card module-card--orange">
+
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="14" rx="3"></rect>
+                <path d="M3 10h18M7 15h4M16 15h1"></path>
+              </svg>
+            </span>
 
             <h3>Company Subscription</h3>
 
             <p>
-              Company subscription records, renewal dates,
-              due-date monitoring, overdue tracking, payment
-              history, reports, and Slack alerts.
+              Renewal dates, due-date monitoring, overdue tracking,
+              payment history, reports, access logging, and Slack alerts.
             </p>
 
           </article>
 
-          <article class="module-card">
+          <!-- BITDEFENDER USERS -->
 
-            <span>◇</span>
+          <article class="module-card module-card--red">
+
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3 19 6v5c0 4.8-3 8.2-7 10-4-1.8-7-5.2-7-10V6l7-3Z"></path>
+                <circle cx="12" cy="10" r="2"></circle>
+                <path d="M8.5 16c.6-2.2 1.8-3.2 3.5-3.2s2.9 1 3.5 3.2"></path>
+              </svg>
+            </span>
 
             <h3>Bitdefender Users</h3>
 
             <p>
               Endpoint users, assigned devices, security status,
-              CSV imports, employee-device mapping, and monthly
-              IT-check integration.
+              CSV imports, employee mapping, and IT-check integration.
             </p>
 
           </article>
 
-          <article class="module-card">
+          <!-- BACKEND ACCESS -->
 
-            <span>🔑</span>
+          <article class="module-card module-card--orange">
+
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="8" cy="15" r="4"></circle>
+                <path d="M11 12l8-8M16 4h3v3M10.8 17.2l2 2"></path>
+              </svg>
+            </span>
 
             <h3>Backend Access</h3>
 
             <p>
-              Centralized WordPress and cPanel administrative
-              access records connected to managed websites
-              and domain inventory.
+              Centralized WordPress and cPanel administrative access
+              records connected to managed websites and domain inventory.
             </p>
 
           </article>
 
+          <!-- SERVERS -->
+
           <article class="module-card">
 
-            <span>▦</span>
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="7" rx="2"></rect>
+                <rect x="3" y="14" width="18" height="7" rx="2"></rect>
+                <path d="M7 6.5h.01M7 17.5h.01M11 6.5h7M11 17.5h7"></path>
+              </svg>
+            </span>
 
             <h3>Servers & Health Records</h3>
 
             <p>
-              Dedicated server inventory, CPU, memory, disk,
-              backup status, service monitoring, alerts, and
-              historical health records.
+              Dedicated server inventory, CPU, memory, disk, backup status,
+              service monitoring, alerts, and historical health records.
             </p>
 
           </article>
 
-          <article class="module-card">
+          <!-- WORDPRESS INVENTORY AGENT -->
 
-            <span>W</span>
+          <article class="module-card module-card--cyan">
+
+            <span class="module-card__icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M6.5 8.5 10 18l2.4-6.4L15 18l3.3-9.5M8 6.5h2M14 6.5h3"></path>
+              </svg>
+            </span>
 
             <h3>WordPress Inventory Agent</h3>
 
             <p>
-              WordPress version, PHP version, installed plugins,
-              and plugin-version information collected through
-              a secured REST API.
+              WordPress version, PHP version, installed plugins, and
+              plugin-version information collected through a secured API.
             </p>
 
           </article>
@@ -1176,6 +1239,7 @@
           </button>
 
         </div>
+
       </div>
     </section>
 
@@ -1191,13 +1255,11 @@
           <div class="section-heading section-heading--compact">
 
             <div>
-
               <p class="eyebrow eyebrow--dark">
                 Career
               </p>
 
               <h2>Work Experience</h2>
-
             </div>
 
           </div>
@@ -1219,7 +1281,6 @@
               </p>
 
               <ul>
-
                 <li>
                   Administer web-hosting and WordPress environments.
                 </li>
@@ -1233,7 +1294,6 @@
                   Develop automation, GLPI customizations,
                   dashboards, integrations, and internal portals.
                 </li>
-
               </ul>
 
             </section>
@@ -1253,7 +1313,6 @@
               </p>
 
               <ul>
-
                 <li>
                   Resolved more than 50 support tickets daily.
                 </li>
@@ -1261,7 +1320,6 @@
                 <li>
                   Maintained an 85–90% first-contact resolution rate.
                 </li>
-
               </ul>
 
             </section>
@@ -1281,7 +1339,6 @@
               </p>
 
               <ul>
-
                 <li>
                   Maintained more than 99% data accuracy.
                 </li>
@@ -1289,7 +1346,6 @@
                 <li>
                   Improved Excel workflows by approximately 20%.
                 </li>
-
               </ul>
 
             </section>
@@ -1305,13 +1361,11 @@
           <div class="section-heading section-heading--compact">
 
             <div>
-
               <p class="eyebrow eyebrow--dark">
                 Training
               </p>
 
               <h2>Education & Certifications</h2>
-
             </div>
 
           </div>
@@ -1335,11 +1389,9 @@
           <div class="cert-list">
 
             <article>
-
               <span>MS</span>
 
               <div>
-
                 <h3>
                   Microsoft Office Specialist: Excel
                 </h3>
@@ -1347,17 +1399,13 @@
                 <p>
                   Microsoft • May 2025
                 </p>
-
               </div>
-
             </article>
 
             <article>
-
               <span>C</span>
 
               <div>
-
                 <h3>
                   Introduction to Cybersecurity
                 </h3>
@@ -1365,17 +1413,13 @@
                 <p>
                   Cisco Networking Academy • March 2026
                 </p>
-
               </div>
-
             </article>
 
             <article>
-
               <span>C</span>
 
               <div>
-
                 <h3>
                   Networking Basics
                 </h3>
@@ -1383,17 +1427,13 @@
                 <p>
                   Cisco Networking Academy • April 2026
                 </p>
-
               </div>
-
             </article>
 
             <article>
-
               <span>T</span>
 
               <div>
-
                 <h3>
                   Computer Systems, Networks & Servers
                 </h3>
@@ -1401,9 +1441,7 @@
                 <p>
                   TESDA • 2023–2026
                 </p>
-
               </div>
-
             </article>
 
           </div>
@@ -1511,10 +1549,6 @@
     >
 
   </dialog>
-
-  <!-- ======================================================
-       LINKEDIN PLACEHOLDER MESSAGE
-  ======================================================= -->
 
   <div
     class="toast"
