@@ -20,33 +20,64 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
-    /* =====================================================
-       PROJECT CARDS
-    ====================================================== */
+    /* =========================================================
+       PROJECT SECTION
+    ========================================================= */
+
+    #projects .section-card {
+      padding: 30px;
+    }
 
     .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       align-items: stretch;
+      gap: 18px;
     }
 
     .project-card {
       display: flex;
-      height: 100%;
       min-width: 0;
+      height: 100%;
       flex-direction: column;
       overflow: hidden;
+      border: 1px solid #dbe5f2;
+      border-radius: 16px;
+      background: #ffffff;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #bfd2ec;
+      box-shadow: 0 20px 42px rgba(28, 71, 135, 0.14);
     }
 
     .project-card__image {
       display: block;
       width: 100%;
+      aspect-ratio: 16 / 9;
+      flex: 0 0 auto;
       padding: 0;
+      overflow: hidden;
       border: 0;
-      cursor: pointer;
+      background: #eaf1fb;
+      cursor: zoom-in;
     }
 
     .project-card__image img {
       display: block;
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-card__image img {
+      transform: scale(1.025);
     }
 
     .project-card__body {
@@ -54,45 +85,39 @@
       min-width: 0;
       flex: 1;
       flex-direction: column;
+      padding: 19px 18px 18px;
     }
 
-    .project-card__body h3 {
-      margin-top: 0;
-    }
-
-    .project-card__description {
-      margin-bottom: 18px;
-    }
-
-    /* =====================================================
-       PROJECT ICONS AND DOMAINS
-    ====================================================== */
+    /* =========================================================
+       PROJECT PLATFORM ICONS
+    ========================================================= */
 
     .project-card__meta {
       display: flex;
+      min-height: 58px;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 13px;
+      margin-bottom: 18px;
     }
 
-    .project-card__meta > div {
+    .project-card__meta-content {
       min-width: 0;
     }
 
     .project-card__icon {
       display: inline-flex;
-      width: 46px;
-      height: 46px;
-      flex: 0 0 46px;
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
       align-items: center;
       justify-content: center;
       border: 1px solid transparent;
-      border-radius: 14px;
+      border-radius: 16px;
     }
 
     .project-card__icon svg {
-      width: 24px;
-      height: 24px;
+      width: 31px;
+      height: 31px;
       fill: none;
       stroke: currentColor;
       stroke-width: 1.8;
@@ -100,53 +125,96 @@
       stroke-linejoin: round;
     }
 
-    .project-card__icon--blue {
-      color: #1769e8;
-      border-color: #cfe0ff;
-      background: #eaf2ff;
-    }
-
-    .project-card__icon--purple {
-      color: #7c3aed;
-      border-color: #ddd0fc;
-      background: #f2edff;
-    }
-
-    .project-card__icon--green {
-      color: #169c58;
-      border-color: #c9edd8;
-      background: #eaf8f0;
-    }
-
-    .project-card__icon--cyan {
-      color: #0785b8;
-      border-color: #c7eaf5;
-      background: #e8f8fc;
-    }
-
     .project-card__label {
       display: block;
-      margin-bottom: 3px;
-      color: #64748b;
+      margin-bottom: 4px;
+      color: #687892;
       font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.07em;
-      line-height: 1.3;
+      font-weight: 900;
+      letter-spacing: 0.075em;
+      line-height: 1.35;
       text-transform: uppercase;
     }
 
     .project-card__domain {
-      margin: 0;
-      color: #175cd3;
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 1.35;
+      margin: 0 !important;
+      font-size: 13px !important;
+      font-weight: 850;
+      line-height: 1.4;
       overflow-wrap: anywhere;
     }
 
-    /* =====================================================
-       TECHNOLOGY BADGES
-    ====================================================== */
+    /* IT MANAGEMENT */
+
+    .project-card--blue .project-card__icon {
+      color: #1267eb;
+      border-color: #cadeff;
+      background: #edf4ff;
+    }
+
+    .project-card--blue .project-card__domain {
+      color: #1267eb !important;
+    }
+
+    /* ADMIN HUB */
+
+    .project-card--purple .project-card__icon {
+      color: #7c3aed;
+      border-color: #dacbff;
+      background: #f4efff;
+    }
+
+    .project-card--purple .project-card__domain {
+      color: #7433db !important;
+    }
+
+    /* EMPLOYEE HUB */
+
+    .project-card--green .project-card__icon {
+      color: #099650;
+      border-color: #c3e8d2;
+      background: #edf9f2;
+    }
+
+    .project-card--green .project-card__domain {
+      color: #078946 !important;
+    }
+
+    /* CLIENT PORTAL */
+
+    .project-card--cyan .project-card__icon {
+      color: #008dbb;
+      border-color: #bde9f5;
+      background: #e9f9fd;
+    }
+
+    .project-card--cyan .project-card__domain {
+      color: #0089b5 !important;
+    }
+
+    /* =========================================================
+       PROJECT TEXT
+    ========================================================= */
+
+    .project-card__body h3 {
+      margin: 0 0 10px;
+      color: #071f49;
+      font-size: 19px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      line-height: 1.28;
+    }
+
+    .project-card__description {
+      margin: 0 0 20px !important;
+      color: #61708a !important;
+      font-size: 13px !important;
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       PROJECT TECHNOLOGY TAGS
+    ========================================================= */
 
     .project-tags {
       display: flex;
@@ -162,63 +230,118 @@
       align-items: center;
       justify-content: center;
       padding: 6px 12px;
-      border: 1px solid #cfe0ff;
+      border: 1px solid;
       border-radius: 999px;
-      background: #f1f6ff;
-      color: #075fd8;
       font-size: 12px;
       font-weight: 800;
       line-height: 1;
       white-space: nowrap;
     }
 
-    /* =====================================================
-       GLPI MODULE CARDS
-    ====================================================== */
+    .project-card--blue .project-tags span {
+      color: #1267eb;
+      border-color: #cadeff;
+      background: #f0f5ff;
+    }
 
-    .module-grid {
+    .project-card--purple .project-tags span {
+      color: #7433db;
+      border-color: #ddceff;
+      background: #f7f2ff;
+    }
+
+    .project-card--green .project-tags span {
+      color: #078946;
+      border-color: #c8ead5;
+      background: #effaf3;
+    }
+
+    .project-card--cyan .project-tags span {
+      color: #0089b5;
+      border-color: #bfe8f5;
+      background: #effafd;
+    }
+
+    /* =========================================================
+       GLPI MODULES SECTION
+    ========================================================= */
+
+    .pv-modules-panel {
+      padding: 31px 30px 36px;
+    }
+
+    .pv-modules-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: end;
+      gap: 70px;
+      margin-bottom: 30px;
+    }
+
+    .pv-modules-heading__title .eyebrow {
+      margin-bottom: 17px;
+    }
+
+    .pv-modules-heading h2 {
+      max-width: 550px;
+      margin: 0;
+      color: #10233f;
+      font-size: clamp(34px, 3.2vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1.23;
+    }
+
+    .pv-modules-heading__description {
+      max-width: 540px;
+      margin: 0 0 4px;
+      color: #61708a;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .pv-modules-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .module-card {
+    .pv-module-card {
       display: flex;
+      min-width: 0;
       min-height: 205px;
       flex-direction: column;
-      align-items: flex-start;
-      padding: 22px;
-      border: 1px solid #d9e4f2;
+      align-items: center;
+      padding: 21px 22px 24px;
+      border: 1px solid #d3e0f2;
       border-radius: 18px;
       background: #ffffff;
       transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease;
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
     }
 
-    .module-card:hover {
-      transform: translateY(-4px);
-      border-color: #b9d2f5;
-      box-shadow: 0 16px 35px rgba(15, 53, 105, 0.1);
+    .pv-module-card:hover {
+      transform: translateY(-3px);
+      border-color: #bdd1ed;
+      box-shadow: 0 17px 34px rgba(28, 71, 135, 0.10);
     }
 
-    .module-card__icon {
-      display: inline-flex;
+    .pv-module-icon {
+      display: grid;
       width: 46px;
       height: 46px;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 17px;
-      border: 1px solid #d7e5fb;
-      border-radius: 14px;
-      background: #edf4ff;
-      color: #1769e8;
+      flex: 0 0 46px;
+      place-items: center;
+      margin-bottom: 13px;
+      border: 1px solid transparent;
+      border-radius: 13px;
     }
 
-    .module-card__icon svg {
-      width: 24px;
-      height: 24px;
+    .pv-module-icon svg {
+      width: 22px;
+      height: 22px;
       fill: none;
       stroke: currentColor;
       stroke-width: 1.8;
@@ -226,81 +349,134 @@
       stroke-linejoin: round;
     }
 
-    .module-card h3 {
-      margin: 0 0 9px;
-      color: #08234a;
-      font-size: 16px;
-      line-height: 1.35;
+    .pv-module-icon--blue {
+      color: #1267eb;
+      border-color: #cadeff;
+      background: #edf4ff;
     }
 
-    .module-card p {
+    .pv-module-icon--cyan {
+      color: #008dbb;
+      border-color: #bde9f5;
+      background: #e9f9fd;
+    }
+
+    .pv-module-icon--green {
+      color: #07934e;
+      border-color: #c3e8d2;
+      background: #edf9f2;
+    }
+
+    .pv-module-icon--purple {
+      color: #7c3aed;
+      border-color: #dacbff;
+      background: #f4efff;
+    }
+
+    .pv-module-icon--orange {
+      color: #f06a00;
+      border-color: #ffd6b5;
+      background: #fff5ec;
+    }
+
+    .pv-module-icon--red {
+      color: #ef334e;
+      border-color: #ffc7cf;
+      background: #fff1f3;
+    }
+
+    .pv-module-card h3 {
+      width: 100%;
+      margin: 0 0 8px;
+      color: #06204c;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      line-height: 1.35;
+      text-align: left;
+    }
+
+    .pv-module-card p {
+      width: 100%;
       margin: 0;
-      color: #5c6f8b;
+      color: #61708a;
       font-size: 12px;
       line-height: 1.65;
+      text-align: center;
     }
 
-    .module-card--purple .module-card__icon {
-      color: #7c3aed;
-      border-color: #ddd0fc;
-      background: #f2edff;
+    #modules .gallery-row {
+      display: none !important;
     }
 
-    .module-card--green .module-card__icon {
-      color: #169c58;
-      border-color: #caecd8;
-      background: #eaf8f0;
-    }
-
-    .module-card--orange .module-card__icon {
-      color: #e87618;
-      border-color: #f6dcc4;
-      background: #fff4e9;
-    }
-
-    .module-card--cyan .module-card__icon {
-      color: #0785b8;
-      border-color: #c7eaf5;
-      background: #e8f8fc;
-    }
-
-    .module-card--red .module-card__icon {
-      color: #dc3545;
-      border-color: #f2ccd0;
-      background: #fff0f1;
-    }
-
-    /* =====================================================
+    /* =========================================================
        RESPONSIVE
-    ====================================================== */
+    ========================================================= */
 
-    @media (max-width: 1080px) {
-      .module-grid {
+    @media (max-width: 1100px) {
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pv-modules-heading {
+        gap: 35px;
+      }
+
+      .pv-modules-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 760px) {
-      .module-grid {
+      #projects .section-card {
+        padding: 24px 18px;
+      }
+
+      .project-grid {
         grid-template-columns: 1fr;
       }
 
       .project-card__icon {
-        width: 40px;
-        height: 40px;
-        flex-basis: 40px;
-        border-radius: 12px;
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
       }
 
       .project-card__icon svg {
-        width: 21px;
-        height: 21px;
+        width: 28px;
+        height: 28px;
       }
 
       .project-tags span {
         min-height: 30px;
         padding: 6px 10px;
         font-size: 11px;
+      }
+
+      .pv-modules-panel {
+        padding: 25px 18px;
+      }
+
+      .pv-modules-heading {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 23px;
+      }
+
+      .pv-modules-heading h2 {
+        font-size: 31px;
+      }
+
+      .pv-modules-heading__description {
+        font-size: 14px;
+      }
+
+      .pv-modules-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pv-module-card {
+        min-height: 190px;
       }
     }
   </style>
@@ -454,7 +630,7 @@
             class="hero__illustration"
             aria-hidden="true"
           >
-            <svg viewBox="0 0 320 250">
+            <svg viewBox="0 0 320 250" role="img">
 
               <defs>
                 <linearGradient id="heroLine" x1="0" x2="1">
@@ -626,10 +802,9 @@
         <div class="skills-grid">
 
           <article class="skill-column">
-
             <span class="skill-column__icon">▦</span>
 
-            <h3>Systems & Administration</h3>
+            <h3>Systems &amp; Administration</h3>
 
             <div class="pill-list">
               <span>Linux</span>
@@ -638,17 +813,15 @@
               <span>MobaXterm</span>
               <span>Bash</span>
               <span>PowerShell</span>
-              <span>Backup & Recovery</span>
+              <span>Backup &amp; Recovery</span>
               <span>Log Review</span>
             </div>
-
           </article>
 
           <article class="skill-column">
-
             <span class="skill-column__icon">◎</span>
 
-            <h3>Web & Hosting</h3>
+            <h3>Web &amp; Hosting</h3>
 
             <div class="pill-list">
               <span>WordPress</span>
@@ -660,14 +833,12 @@
               <span>SSL</span>
               <span>Website Backups</span>
             </div>
-
           </article>
 
           <article class="skill-column">
-
             <span class="skill-column__icon">&lt;/&gt;</span>
 
-            <h3>Development & Automation</h3>
+            <h3>Development &amp; Automation</h3>
 
             <div class="pill-list">
               <span>PHP</span>
@@ -679,14 +850,12 @@
               <span>Cron</span>
               <span>Windows Batch</span>
             </div>
-
           </article>
 
           <article class="skill-column">
-
             <span class="skill-column__icon">⬡</span>
 
-            <h3>Security & IT Management</h3>
+            <h3>Security &amp; IT Management</h3>
 
             <div class="pill-list">
               <span>GLPI 11</span>
@@ -698,7 +867,6 @@
               <span>Asset Management</span>
               <span>IT Documentation</span>
             </div>
-
           </article>
 
         </div>
@@ -706,7 +874,7 @@
     </section>
 
     <!-- ======================================================
-         MAIN PROJECTS
+         PROJECTS
     ======================================================= -->
 
     <section class="section-shell" id="projects">
@@ -735,9 +903,11 @@
 
         <div class="project-grid">
 
-          <!-- PRIMEVIEW GLPI -->
+          <!-- ==================================================
+               PRIMEVIEW GLPI
+          =================================================== -->
 
-          <article class="project-card reveal">
+          <article class="project-card project-card--blue reveal">
 
             <button
               class="project-card__image"
@@ -756,17 +926,42 @@
               <div class="project-card__meta">
 
                 <span
-                  class="project-card__icon project-card__icon--blue"
+                  class="project-card__icon"
                   aria-hidden="true"
                 >
+                  <!-- Dashboard and server icon -->
                   <svg viewBox="0 0 24 24">
-                    <rect x="3" y="3" width="18" height="7" rx="2"></rect>
-                    <rect x="3" y="14" width="18" height="7" rx="2"></rect>
-                    <path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"></path>
+
+                    <rect
+                      x="3"
+                      y="3"
+                      width="18"
+                      height="11"
+                      rx="2"
+                    ></rect>
+
+                    <path d="M7 7h3v3H7z"></path>
+                    <path d="M13 7h4"></path>
+                    <path d="M13 10h4"></path>
+
+                    <rect
+                      x="6"
+                      y="17"
+                      width="12"
+                      height="4"
+                      rx="1.5"
+                    ></rect>
+
+                    <path d="M9 19h.01"></path>
+                    <path d="M12 19h4"></path>
+                    <path d="M9 14v3"></path>
+                    <path d="M15 14v3"></path>
+
                   </svg>
                 </span>
 
-                <div>
+                <div class="project-card__meta-content">
+
                   <span class="project-card__label">
                     IT Management Platform
                   </span>
@@ -774,11 +969,14 @@
                   <p class="project-card__domain">
                     inventory.primeview.com
                   </p>
+
                 </div>
 
               </div>
 
-              <h3>PrimeView GLPI IT Management System</h3>
+              <h3>
+                PrimeView GLPI IT Management System
+              </h3>
 
               <p class="project-card__description">
                 Centralized platform for IT assets, support tickets,
@@ -796,9 +994,11 @@
             </div>
           </article>
 
-          <!-- ADMIN HUB -->
+          <!-- ==================================================
+               ADMIN HUB
+          =================================================== -->
 
-          <article class="project-card reveal">
+          <article class="project-card project-card--purple reveal">
 
             <button
               class="project-card__image"
@@ -817,17 +1017,35 @@
               <div class="project-card__meta">
 
                 <span
-                  class="project-card__icon project-card__icon--purple"
+                  class="project-card__icon"
                   aria-hidden="true"
                 >
+                  <!-- Building and settings icon -->
                   <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="8" r="3"></circle>
-                    <path d="M6 20v-2a6 6 0 0 1 12 0v2"></path>
-                    <path d="M18 5h3M19.5 3.5v3"></path>
+
+                    <path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7"></path>
+                    <path d="M8 7h1"></path>
+                    <path d="M12 7h1"></path>
+                    <path d="M8 11h1"></path>
+                    <path d="M12 11h1"></path>
+                    <path d="M8 15h1"></path>
+                    <path d="M4 21h11"></path>
+
+                    <circle cx="18" cy="17" r="3"></circle>
+                    <path d="M18 12.5v1.5"></path>
+                    <path d="M18 20v1.5"></path>
+                    <path d="M13.5 17H15"></path>
+                    <path d="M21 17h1.5"></path>
+                    <path d="m14.8 13.8 1 1"></path>
+                    <path d="m20.2 19.2 1 1"></path>
+                    <path d="m21.2 13.8-1 1"></path>
+                    <path d="m15.8 19.2-1 1"></path>
+
                   </svg>
                 </span>
 
-                <div>
+                <div class="project-card__meta-content">
+
                   <span class="project-card__label">
                     Administration Portal
                   </span>
@@ -835,11 +1053,14 @@
                   <p class="project-card__domain">
                     admin.primeview.com
                   </p>
+
                 </div>
 
               </div>
 
-              <h3>PrimeView Admin Hub</h3>
+              <h3>
+                PrimeView Admin Hub
+              </h3>
 
               <p class="project-card__description">
                 Administration portal for employee management,
@@ -857,9 +1078,11 @@
             </div>
           </article>
 
-          <!-- EMPLOYEE HUB -->
+          <!-- ==================================================
+               EMPLOYEE HUB
+          =================================================== -->
 
-          <article class="project-card reveal">
+          <article class="project-card project-card--green reveal">
 
             <button
               class="project-card__image"
@@ -878,17 +1101,36 @@
               <div class="project-card__meta">
 
                 <span
-                  class="project-card__icon project-card__icon--green"
+                  class="project-card__icon"
                   aria-hidden="true"
                 >
+                  <!-- Employee ID card icon -->
                   <svg viewBox="0 0 24 24">
-                    <rect x="4" y="3" width="16" height="18" rx="3"></rect>
-                    <circle cx="12" cy="9" r="3"></circle>
-                    <path d="M7.5 18c.6-2.6 2.1-4 4.5-4s3.9 1.4 4.5 4"></path>
+
+                    <rect
+                      x="3"
+                      y="5"
+                      width="18"
+                      height="14"
+                      rx="2"
+                    ></rect>
+
+                    <circle
+                      cx="9"
+                      cy="10"
+                      r="2.3"
+                    ></circle>
+
+                    <path d="M5.5 16c.5-2.2 1.7-3.3 3.5-3.3s3 1.1 3.5 3.3"></path>
+                    <path d="M15 9h3"></path>
+                    <path d="M15 12h3"></path>
+                    <path d="M15 15h2"></path>
+
                   </svg>
                 </span>
 
-                <div>
+                <div class="project-card__meta-content">
+
                   <span class="project-card__label">
                     Employee Self-Service
                   </span>
@@ -896,11 +1138,14 @@
                   <p class="project-card__domain">
                     hub.primeview.com
                   </p>
+
                 </div>
 
               </div>
 
-              <h3>PrimeView Employee Hub</h3>
+              <h3>
+                PrimeView Employee Hub
+              </h3>
 
               <p class="project-card__description">
                 Employee self-service portal for time records,
@@ -918,9 +1163,11 @@
             </div>
           </article>
 
-          <!-- CLIENT SUPPORT PORTAL -->
+          <!-- ==================================================
+               CLIENT SUPPORT PORTAL
+          =================================================== -->
 
-          <article class="project-card reveal">
+          <article class="project-card project-card--cyan reveal">
 
             <button
               class="project-card__image"
@@ -939,18 +1186,32 @@
               <div class="project-card__meta">
 
                 <span
-                  class="project-card__icon project-card__icon--cyan"
+                  class="project-card__icon"
                   aria-hidden="true"
                 >
+                  <!-- Support ticket with check icon -->
                   <svg viewBox="0 0 24 24">
-                    <path d="M4 13v-2a8 8 0 0 1 16 0v2"></path>
-                    <path d="M4 13a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2v-2Z"></path>
-                    <path d="M20 13a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2Z"></path>
-                    <path d="M17 18c-1 2-3 3-5 3h-1"></path>
+
+                    <path
+                      d="M4 6h12a2 2 0 0 1 2 2v3.5a3 3 0 0 0 0 5V18a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1.5a3 3 0 0 0 0-5V8a2 2 0 0 1 2-2Z"
+                    ></path>
+
+                    <path d="M7 10h5"></path>
+                    <path d="M7 14h3"></path>
+
+                    <circle
+                      cx="18"
+                      cy="17"
+                      r="4"
+                    ></circle>
+
+                    <path d="m16.2 17 1.2 1.2 2.4-2.7"></path>
+
                   </svg>
                 </span>
 
-                <div>
+                <div class="project-card__meta-content">
+
                   <span class="project-card__label">
                     Client Support Platform
                   </span>
@@ -958,11 +1219,14 @@
                   <p class="project-card__domain">
                     clientportal.primeview.com
                   </p>
+
                 </div>
 
               </div>
 
-              <h3>PrimeView Client Support Portal</h3>
+              <h3>
+                PrimeView Client Support Portal
+              </h3>
 
               <p class="project-card__description">
                 Client-facing support portal for reporting issues,
@@ -989,37 +1253,44 @@
     ======================================================= -->
 
     <section class="section-shell" id="modules">
-      <div class="container panel section-card">
+      <div class="container panel pv-modules-panel">
 
-        <div class="section-heading">
+        <div class="pv-modules-heading">
 
-          <div>
+          <div class="pv-modules-heading__title">
+
             <p class="eyebrow eyebrow--dark">
               Extended Platform
             </p>
 
             <h2>
-              Additional GLPI Modules & Integrations
+              Additional GLPI Modules &amp; Integrations
             </h2>
+
           </div>
 
-          <p>
+          <p class="pv-modules-heading__description">
             Custom features built to improve monitoring, visibility,
             access control, automation, and operational efficiency.
           </p>
 
         </div>
 
-        <div class="module-grid">
+        <div class="pv-modules-grid">
 
           <!-- DOMAIN MANAGER -->
 
-          <article class="module-card">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--blue"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"></circle>
-                <path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9M12 3c-3 3-4 6-4 9s1 6 4 9"></path>
+                <path d="M3 12h18"></path>
+                <path d="M12 3c2.5 2.7 3.8 5.7 3.8 9S14.5 18.3 12 21"></path>
+                <path d="M12 3C9.5 5.7 8.2 8.7 8.2 12S9.5 18.3 12 21"></path>
               </svg>
             </span>
 
@@ -1034,12 +1305,16 @@
 
           <!-- IT MONITORING -->
 
-          <article class="module-card module-card--cyan">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--cyan"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
                 <rect x="3" y="4" width="18" height="13" rx="2"></rect>
-                <path d="M8 21h8M12 17v4M6 11h3l2-4 3 8 2-4h2"></path>
+                <path d="M8 21h8M12 17v4"></path>
+                <path d="m6.5 11 2.5-2 2.5 4 2.5-5 3.5 3"></path>
               </svg>
             </span>
 
@@ -1054,12 +1329,19 @@
 
           <!-- MONTHLY IT CHECK -->
 
-          <article class="module-card module-card--green">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--green"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
-                <rect x="4" y="3" width="16" height="18" rx="2"></rect>
-                <path d="M8 8h8M8 12h4M8 16h3M15 15l2 2 3-4"></path>
+                <rect x="5" y="3" width="14" height="18" rx="2"></rect>
+                <path d="M9 7h6"></path>
+                <path d="m8 12 1.5 1.5L12 11"></path>
+                <path d="M14 12h2"></path>
+                <path d="m8 17 1.5 1.5L12 16"></path>
+                <path d="M14 17h2"></path>
               </svg>
             </span>
 
@@ -1067,20 +1349,23 @@
 
             <p>
               Automated workstation inspections, report imports,
-              employee-device mapping, completion tracking, and
-              healthy, warning, or critical statuses.
+              employee-device mapping, completion tracking, and healthy,
+              warning, or critical statuses.
             </p>
 
           </article>
 
           <!-- PRIMEVIEW IAM -->
 
-          <article class="module-card module-card--purple">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--purple"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
-                <path d="M12 3 19 6v5c0 4.8-3 8.2-7 10-4-1.8-7-5.2-7-10V6l7-3Z"></path>
-                <path d="M9 12l2 2 4-5"></path>
+                <path d="M12 3 19 6v5c0 4.6-2.7 8.1-7 10-4.3-1.9-7-5.4-7-10V6l7-3Z"></path>
+                <path d="m9.5 12 1.7 1.7 3.5-4"></path>
               </svg>
             </span>
 
@@ -1095,12 +1380,16 @@
 
           <!-- COMPANY SUBSCRIPTION -->
 
-          <article class="module-card module-card--orange">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--orange"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
                 <rect x="3" y="5" width="18" height="14" rx="3"></rect>
-                <path d="M3 10h18M7 15h4M16 15h1"></path>
+                <path d="M3 9h18"></path>
+                <path d="M7 15h4"></path>
               </svg>
             </span>
 
@@ -1115,13 +1404,16 @@
 
           <!-- BITDEFENDER USERS -->
 
-          <article class="module-card module-card--red">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--red"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
-                <path d="M12 3 19 6v5c0 4.8-3 8.2-7 10-4-1.8-7-5.2-7-10V6l7-3Z"></path>
+                <path d="M12 3 18 6v5c0 4-2.2 7.2-6 9-3.8-1.8-6-5-6-9V6l6-3Z"></path>
                 <circle cx="12" cy="10" r="2"></circle>
-                <path d="M8.5 16c.6-2.2 1.8-3.2 3.5-3.2s2.9 1 3.5 3.2"></path>
+                <path d="M9 16c.4-2 1.4-3 3-3s2.6 1 3 3"></path>
               </svg>
             </span>
 
@@ -1136,12 +1428,17 @@
 
           <!-- BACKEND ACCESS -->
 
-          <article class="module-card module-card--orange">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--orange"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
                 <circle cx="8" cy="15" r="4"></circle>
-                <path d="M11 12l8-8M16 4h3v3M10.8 17.2l2 2"></path>
+                <path d="m11 12 8-8"></path>
+                <path d="m16 4 3 3"></path>
+                <path d="M12 11h3v3"></path>
               </svg>
             </span>
 
@@ -1154,19 +1451,23 @@
 
           </article>
 
-          <!-- SERVERS -->
+          <!-- SERVERS AND HEALTH RECORDS -->
 
-          <article class="module-card">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--blue"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="7" rx="2"></rect>
-                <rect x="3" y="14" width="18" height="7" rx="2"></rect>
-                <path d="M7 6.5h.01M7 17.5h.01M11 6.5h7M11 17.5h7"></path>
+                <rect x="4" y="3" width="16" height="7" rx="2"></rect>
+                <rect x="4" y="14" width="16" height="7" rx="2"></rect>
+                <path d="M8 6.5h.01M8 17.5h.01"></path>
+                <path d="M12 6.5h5M12 17.5h5"></path>
               </svg>
             </span>
 
-            <h3>Servers & Health Records</h3>
+            <h3>Servers &amp; Health Records</h3>
 
             <p>
               Dedicated server inventory, CPU, memory, disk, backup status,
@@ -1177,69 +1478,32 @@
 
           <!-- WORDPRESS INVENTORY AGENT -->
 
-          <article class="module-card module-card--cyan">
+          <article class="pv-module-card">
 
-            <span class="module-card__icon">
+            <span
+              class="pv-module-icon pv-module-icon--cyan"
+              aria-hidden="true"
+            >
               <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"></circle>
-                <path d="M6.5 8.5 10 18l2.4-6.4L15 18l3.3-9.5M8 6.5h2M14 6.5h3"></path>
+                <path d="M6.8 8.5h2.6"></path>
+                <path d="m8.2 8.5 3.1 8"></path>
+                <path d="m10.5 8.5 3 8"></path>
+                <path d="m15.8 8.5-2.3 8"></path>
+                <path d="M15.6 6.8c1.2.7 1.8 1.8 1.8 3.2 0 1.1-.3 2.1-.8 3.2"></path>
               </svg>
             </span>
 
             <h3>WordPress Inventory Agent</h3>
 
             <p>
-              WordPress version, PHP version, installed plugins, and
-              plugin-version information collected through a secured API.
+              WordPress version, PHP version, installed plugins,
+              and plugin-version information collected through a secured API.
             </p>
 
           </article>
 
         </div>
-
-        <div class="gallery-row">
-
-          <button
-            class="gallery-thumb"
-            type="button"
-            data-lightbox="assets/images/projects/domain-manager.png"
-          >
-            <img
-              src="assets/images/projects/domain-manager.png"
-              alt="Domain Manager preview"
-            >
-
-            <span>Domain Manager</span>
-          </button>
-
-          <button
-            class="gallery-thumb"
-            type="button"
-            data-lightbox="assets/images/projects/it-monitoring.png"
-          >
-            <img
-              src="assets/images/projects/it-monitoring.png"
-              alt="IT Monitoring preview"
-            >
-
-            <span>IT Monitoring</span>
-          </button>
-
-          <button
-            class="gallery-thumb"
-            type="button"
-            data-lightbox="assets/images/projects/server-health.png"
-          >
-            <img
-              src="assets/images/projects/server-health.png"
-              alt="Server Health preview"
-            >
-
-            <span>Server Health</span>
-          </button>
-
-        </div>
-
       </div>
     </section>
 
@@ -1277,7 +1541,7 @@
               <h3>Junior System Administrator</h3>
 
               <p class="timeline__company">
-                Primeview
+                PrimeView
               </p>
 
               <ul>
@@ -1365,7 +1629,7 @@
                 Training
               </p>
 
-              <h2>Education & Certifications</h2>
+              <h2>Education &amp; Certifications</h2>
             </div>
 
           </div>
@@ -1435,7 +1699,7 @@
 
               <div>
                 <h3>
-                  Computer Systems, Networks & Servers
+                  Computer Systems, Networks &amp; Servers
                 </h3>
 
                 <p>
