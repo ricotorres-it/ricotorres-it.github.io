@@ -2112,3 +2112,43 @@ img { max-width: 100%; }
   }
 }
 
+/* =========================================================
+   FEATURED PROJECT CASE-STUDY LINK
+========================================================= */
+.project-card__actions {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+}
+
+.project-case-study-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid color-mix(in srgb, var(--brand) 35%, var(--line));
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+  color: var(--brand);
+  font-size: 11px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.project-case-study-link:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--brand) 65%, var(--line));
+  background: color-mix(in srgb, var(--brand) 13%, transparent);
+}
+
+.project-case-study-link span:last-child {
+  transition: transform .18s ease;
+}
+
+.project-case-study-link:hover span:last-child {
+  transform: translateX(3px);
+}
+
