@@ -361,3 +361,25 @@ main[data-project-detail] .project-nav-label{color:#7f9084!important}
 .gallery .nx-case-gallery-item figcaption{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:13px 15px;background:#111c17;font-size:12px}
 .gallery .nx-case-gallery-item figcaption strong{color:#e7ffed;font-size:13px}
 .gallery .nx-case-gallery-item figcaption span{color:#94b6a0;font-size:11px}
+
+/* PrimeView Nexus screenshot showcase: one large preview and selectable thumbnails. */
+main[data-project-detail] .nx-real-gallery.nx-showcase{display:block!important;margin-top:22px}
+.nx-showcase-stage{overflow:hidden;border:1px solid rgba(215,255,224,.16);border-radius:17px;background:#0b120f}
+.nx-showcase-full{display:flex;align-items:center;justify-content:center;min-height:220px;max-height:680px;overflow:hidden;background:#071012}
+.nx-showcase-full img{display:block;width:100%;max-height:680px;height:auto;object-fit:contain;object-position:center;border:0!important;border-radius:0!important;aspect-ratio:auto!important;transition:none!important;transform:none!important}
+.nx-showcase-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 19px;background:#101a15}
+.nx-showcase-caption{display:flex;flex-direction:column;gap:3px;min-width:0}
+.nx-showcase-caption strong{color:#eaffee;font-size:16px}
+.nx-showcase-caption span{color:#8ea99a;font-size:11px}
+.nx-showcase-controls{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.nx-showcase-controls>span{font-size:12px;color:#9fc2ae;font-weight:700;margin-right:5px;font-variant-numeric:tabular-nums}
+.nx-showcase-controls button{width:38px;height:36px;border:1px solid rgba(215,255,224,.2);border-radius:9px;background:#1a2820;color:#e7ffef;font-size:20px;cursor:pointer}
+.nx-showcase-controls button:hover,.nx-showcase-controls button:focus-visible{background:#284332;border-color:#7bdcaa}
+.nx-showcase-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-top:16px}
+.nx-showcase-thumb{display:block;min-width:0;padding:6px;background:#101a15;border:1px solid rgba(215,255,224,.1);border-radius:12px;color:#d2e9d9;text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+.nx-showcase-thumb[aria-pressed="true"]{border-color:#8ce4b0;background:#1d3325;box-shadow:inset 0 0 0 1px rgba(142,228,176,.25)}
+.nx-showcase-thumb:hover,.nx-showcase-thumb:focus-visible{border-color:#78c89e}
+.nx-showcase-thumb img{display:block;width:100%;aspect-ratio:16/9!important;height:auto!important;max-height:none!important;object-fit:contain;object-position:center;background:#060b09;border:0!important;border-radius:7px!important;transform:none!important}
+.nx-showcase-thumb span{display:block;padding:8px 6px 4px;font-size:12px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:850px){.nx-showcase-thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.nx-showcase-thumbs{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.nx-showcase-bottom{align-items:flex-start;padding:13px;flex-wrap:wrap}.nx-showcase-full{min-height:140px}.nx-showcase-caption strong{font-size:14px}}
