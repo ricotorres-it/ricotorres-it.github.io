@@ -4,7 +4,7 @@ window.portfolioData = {
     shortName: "RT",
     title: "System Administrator & IT Infrastructure",
     description: "Production-focused system administration, hosting, infrastructure automation, monitoring, security, backup and recovery, GLPI, and IT operations.",
-    baseUrl: "https://itprimeview.github.io/test/"
+    baseUrl: "https://ricotorres-it.github.io/"
   },
   profile: {
     name: "Rico Torres",
@@ -242,46 +242,51 @@ window.portfolioData = {
     {
       id: "primeview-nexus",
       slug: "primeview-nexus",
-      title: "PrimeView Nexus — Internal Operations Platform",
-      shortDescription: "A unified internal operations platform bringing together HR, workforce timekeeping, employee self-service, accounting, IT monitoring, and connected automation.",
-      fullDescription: "PrimeView Nexus is an evolving, role-based internal web platform for company operations. It brings employee self-service, workforce schedules and timekeeping, accounting review, subscription management, IT visibility, and operational dashboards into one connected workspace.",
-      thumbnail: "assets/images/projects/client-portal.png",
-      screenshots: ["assets/images/projects/client-portal.png"],
-      technologies: ["PHP", "MariaDB / MySQL", "JavaScript", "HTML / CSS", "RBAC", "REST APIs", "n8n", "Linux"],
-      category: "Full-Stack Internal Business Platform",
+      title: "PrimeView Nexus",
+      shortDescription: "An internal web platform for employee self-service, HR, attendance and timesheet reviews, payroll, IT operations, and administration.",
+      fullDescription: "PrimeView Nexus is a role-based internal business operations web application built for PrimeView. Its current modules cover employee workspaces, HR and leave requests, tasks and calendars, workforce timekeeping and reviews, payroll and payslips, IT assets and monitoring, software subscriptions, and system administration. The platform is actively maintained; features still awaiting QA or completion are distinguished from delivered modules.",
+      thumbnail: "",
+      screenshots: [],
+      coverTitle: "PRIMEVIEW NEXUS",
+      coverSubtitle: "Internal Business Operations Platform",
+      technologies: ["PHP", "JavaScript", "MariaDB / MySQL", "Linux / cPanel", "RBAC", "n8n"],
+      category: "Internal Business Operations Web Platform",
       status: "Ongoing",
       featured: true,
-      problem: "Staff, workforce, payroll, accounting, subscriptions, monitoring, and administrative workflows were spread across separate systems and manual processes, making access and reporting difficult to centralize.",
-      role: "Technical leadership, full-stack development, application architecture, server administration, authentication and permissions, internal workflow integrations, and production troubleshooting.",
+      problem: "Employee operations, attendance, leave, payroll reviews, IT assets, monitoring, and administrative work needed a consistent, permission-controlled workspace instead of fragmented tools and manual handoffs.",
+      role: "Application design and implementation, PHP and database maintenance, authentication and permission controls, server-side deployment and troubleshooting, operational integrations, and testing.",
       implemented: [
-        "Unified login, session management, and role-based navigation",
-        "Command Center dashboard with workforce and system health visibility",
-        "Employee workspace, task calendar, and daily task tracking",
-        "Timekeeping dashboard, timesheets, schedules, and configurable flex/break rules",
-        "Payroll Review, payslip workflows, audit trail, and salary encryption foundation",
-        "Accounting software subscriptions and software assignment with GLPI integration",
-        "Domain, SSL, server-health, and endpoint security visibility integrations",
-        "Reusable UI controls, administrative modules, and access management"
+        "Authenticated user accounts, session handling, access permissions, department and role management",
+        "Employee workspace with My Task, Daily Task, team calendar and My Calendar",
+        "HR employee directory, schedules, leave submissions and reviews, balances, evaluation workflows, and COE request interface",
+        "Time In / Time Out and pause / resume workflows, employee timesheets, manager reviews, approved overtime and overbreak calculations",
+        "Timekeeping dashboard with half-period and full-calendar-month filters",
+        "Payroll employee setup and period review, payslip editor, duplicate protection, finalization and My Payslips",
+        "IT inventory, software assignments, domain and SSL records, server health, backup monitoring, WFH speed test, and monthly IT checks",
+        "Bitdefender operational views including devices, threats, risk and collector health",
+        "System user management, permission-aware navigation, login logs, and update logs"
       ],
       features: [
-        "Role-aware employee, HR, operations, and accounting workspaces",
-        "Workforce attendance and approved overtime calculations",
-        "Task calendars, daily task updates, and workforce reporting",
-        "Accounting-only payroll review and correction workflow",
-        "Auditability, permissions, and sensitive-data protection",
-        "GLPI and n8n-backed operational integrations",
-        "Desktop-focused admin dashboards and shared UI components"
+        "Role-scoped dashboards and module navigation",
+        "Leave request history and authorized reviewer actions",
+        "Schedule-aware credited work, breaks and manager-approved overtime",
+        "Employee task records and shared calendar views",
+        "Payroll review and payslip access controlled by permissions",
+        "IT monitoring dashboards with filtering and historical records",
+        "Software assignment and operational inventory visibility",
+        "Protected actions with session-based authentication and CSRF controls"
       ],
-      architecture: "A PHP and JavaScript application backed by MariaDB/MySQL runs on a managed Linux hosting environment. Authenticated users access permission-scoped modules, with GLPI and n8n workflows supporting selected IT operations. Private runtime configuration and sensitive production data are kept separate from public web assets.",
-      automation: "Recurring monitoring and Bitdefender collection workflows integrate operational status into internal dashboards; n8n-based orchestration and proposed AI-assisted development remain ongoing work rather than completed capabilities.",
-      security: "Session timeouts, role-based authorization, record ownership, audit logging, and encrypted payroll data are part of the security approach. Internal URLs, server addresses, credentials, employee records, financial details, and source code are not published in this case study.",
+      architecture: "A PHP and JavaScript web application hosted on a Linux/cPanel environment with MariaDB/MySQL storage. Protected application code and private configuration are maintained separately from the public entry points. Server-side authentication and permission checks gate employee, HR, Accounting, IT, and System modules. Selected IT collection and reporting workflows exchange data with external services through restricted integrations.",
+      automation: "Implemented operational workflows include WFH speed-test collection through Slack and n8n, historical backup to Google Sheets, and recurring IT monitoring and data collection. Bitdefender orchestration and other deployment/recovery improvements continue to be validated; these are not described as fully completed.",
+      security: "The platform includes authenticated sessions, role-based permissions, login-attempt protection, CSRF checks, and restricted access to sensitive modules. Payroll audit completeness, compensation encryption at rest, fine-grained Accounting access and broader security hardening remain under review. Public case-study materials exclude credentials, employee information, financial records and private endpoints.",
       results: [
-        "Consolidated multiple internal operations into one connected workspace",
-        "Built working modules for timekeeping, employee tasks, payroll review, and subscriptions",
-        "Established shared UI and permissions foundations for continued development",
-        "Improved visibility across workforce and selected IT operations"
+        "Delivered connected employee, HR, timekeeping, payroll, IT and administrative module interfaces",
+        "Added a full-calendar-month Timekeeping dashboard filter alongside existing payroll period filters",
+        "Centralized IT inventory, domain/SSL, server health and selected endpoint monitoring views",
+        "Introduced permission-scoped workflows and reusable application navigation"
       ]
-    }  ],
+    }
+  ],
   contact: {
     email: "ricordrgz8@gmail.com",
     location: "San Jose Del Monte, Bulacan, Philippines",
