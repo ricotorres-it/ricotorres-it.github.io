@@ -266,13 +266,13 @@ window.portfolioData = {
       features: [
         "Role-aware employee, HR, operations, and accounting workspaces",
         "Workforce attendance and approved overtime calculations",
-        "Task tracking and Time Doctor integration work",
+        "Task calendars, daily task updates, and workforce reporting",
         "Accounting-only payroll review and correction workflow",
         "Auditability, permissions, and sensitive-data protection",
         "GLPI and n8n-backed operational integrations",
         "Desktop-focused admin dashboards and shared UI components"
       ],
-      architecture: "A PHP and JavaScript application backed by MariaDB/MySQL runs on a managed Linux hosting environment. Authenticated users access permission-scoped modules, with selected GLPI, Time Doctor, and n8n integrations connecting operational workflows. Private runtime configuration and sensitive production data are kept separate from public web assets.",
+      architecture: "A PHP and JavaScript application backed by MariaDB/MySQL runs on a managed Linux hosting environment. Authenticated users access permission-scoped modules, with GLPI and n8n workflows supporting selected IT operations. Private runtime configuration and sensitive production data are kept separate from public web assets.",
       automation: "Recurring monitoring and Bitdefender collection workflows integrate operational status into internal dashboards; n8n-based orchestration and proposed AI-assisted development remain ongoing work rather than completed capabilities.",
       security: "Session timeouts, role-based authorization, record ownership, audit logging, and encrypted payroll data are part of the security approach. Internal URLs, server addresses, credentials, employee records, financial details, and source code are not published in this case study.",
       results: [
