@@ -344,3 +344,20 @@ main[data-project-detail] .project-nav-label{color:#7f9084!important}
   .project-library article:focus-within,
   main[data-project-detail] .gallery img:hover{transform:none!important}
 }
+
+/* Nexus conceptual gallery: all images are clearly labeled illustrations. */
+.nx-gallery-disclaimer{
+  margin:0 0 16px;
+  padding:12px 15px;
+  border-left:3px solid #7ee4b2;
+  background:rgba(120,225,167,.055);
+  border-radius:0 10px 10px 0;
+  color:#b9d5c3;
+  font-size:13px;
+  line-height:1.65;
+}
+.gallery .nx-case-gallery-item{min-width:0;margin:0;overflow:hidden;border:1px solid rgba(215,255,224,.14);border-radius:13px;background:#0e1513}
+.gallery .nx-case-gallery-item img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;border:0;border-radius:0;background:#0c171c}
+.gallery .nx-case-gallery-item figcaption{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:13px 15px;background:#111c17;font-size:12px}
+.gallery .nx-case-gallery-item figcaption strong{color:#e7ffed;font-size:13px}
+.gallery .nx-case-gallery-item figcaption span{color:#94b6a0;font-size:11px}
