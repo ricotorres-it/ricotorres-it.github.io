@@ -1,0 +1,1 @@
+PrimeView Nexus actual UI captures submitted by the user. Sensitive table cells and relevant identifiers blurred. This package is intended for portfolio review; verify every screenshot before public posting. No AI generated scenes.
