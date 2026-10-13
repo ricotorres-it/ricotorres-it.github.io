@@ -54,7 +54,7 @@
                     <span class="home-projects-showcase__address">${escapeHtml(project.category)}</span>
                   </div>
                   <div class="home-projects-showcase__media">
-                    <img src="${projectImage(project)}" alt="Sanitized ${escapeHtml(project.title)} project screenshot" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async" width="1280" height="720">
+                    ${project.thumbnail ? `<img src="${projectImage(project)}" alt="${escapeHtml(project.title)} project image" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async" width="1280" height="720">` : `<div class="project-cover-fallback" role="img" aria-label="${escapeHtml(project.title)} project cover"><span class="project-cover-fallback__kicker">PROJECT CASE STUDY</span><strong>${escapeHtml(project.coverTitle || project.title)}</strong><span class="project-cover-fallback__subtitle">${escapeHtml(project.coverSubtitle || project.category)}</span></div>`}
                   </div>
                 </a>
               </article>`;
