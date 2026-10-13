@@ -399,16 +399,52 @@
 
       const gallery = $('[data-project-gallery]');
       if (gallery) {
-        const illustrative = Boolean(project.screenshotsAreIllustrative);
-        gallery.innerHTML = (project.screenshots || []).map((source, index) => {
-          const label = project.screenshotLabels?.[index] || `Interface view ${index + 1}`;
-          return `<figure class="nx-case-gallery-item">
-            <img src="${base}${escapeHtml(source)}" alt="${escapeHtml(project.title)} — ${escapeHtml(label)}${illustrative ? ' (conceptual illustration, not a live capture)' : ' screenshot'}" loading="lazy" decoding="async" width="1600" height="900">
-            <figcaption><strong>${escapeHtml(label)}</strong>${illustrative ? '<span>Illustrative UI • Sample data</span>' : ''}</figcaption>
-          </figure>`;
-        }).join('');
-        if (illustrative) {
-          gallery.insertAdjacentHTML('beforebegin', '<p class="nx-gallery-disclaimer">Conceptual interface previews based on documented Nexus modules. These are illustrations with fictional sample data, not screenshots from the live application.</p>');
+        const images = project.screenshots || [];
+        if (images.length) {
+          const makeAlt = (index) => `${project.title} — ${project.screenshotLabels?.[index] || 'Screenshot ' + (index + 1)} (sensitive information redacted)`;
+          const labels = images.map((_, index) => project.screenshotLabels?.[index] || `Screenshot ${index + 1}`);
+          gallery.classList.add('nx-showcase');
+          gallery.innerHTML = `
+            <div class="nx-showcase-stage">
+              <a class="nx-showcase-full" href="${base}${escapeHtml(images[0])}" target="_blank" rel="noopener noreferrer" title="Open full-resolution screenshot">
+                <img data-nx-stage-image src="${base}${escapeHtml(images[0])}" alt="${escapeHtml(makeAlt(0))}" width="1600" height="900" decoding="async">
+              </a>
+              <div class="nx-showcase-bottom">
+                <div class="nx-showcase-caption"><strong data-nx-stage-title>${escapeHtml(labels[0])}</strong><span>Actual Nexus screenshot · Sensitive details blurred</span></div>
+                <div class="nx-showcase-controls">
+                  <span data-nx-counter>01 / ${String(images.length).padStart(2, '0')}</span>
+                  <button type="button" data-nx-prev aria-label="Previous screenshot">←</button>
+                  <button type="button" data-nx-next aria-label="Next screenshot">→</button>
+                </div>
+              </div>
+            </div>
+            <div class="nx-showcase-thumbs" aria-label="Choose Nexus screenshot">
+              ${images.map((src, index) => `<button type="button" class="nx-showcase-thumb" data-nx-index="${index}" aria-label="View ${escapeHtml(labels[index])}" aria-pressed="${index === 0 ? 'true' : 'false'}">
+                <img src="${base}${escapeHtml(src)}" alt="" loading="lazy" decoding="async" width="320" height="180">
+                <span>${escapeHtml(labels[index])}</span>
+              </button>`).join('')}
+            </div>`;
+          const stageImg = gallery.querySelector('[data-nx-stage-image]');
+          const stageLink = gallery.querySelector('.nx-showcase-full');
+          const stageTitle = gallery.querySelector('[data-nx-stage-title]');
+          const counter = gallery.querySelector('[data-nx-counter]');
+          const thumbnails = [...gallery.querySelectorAll('[data-nx-index]')];
+          let selectedIndex = 0;
+          const show = (index) => {
+            selectedIndex = (index + images.length) % images.length;
+            const source = `${base}${images[selectedIndex]}`;
+            stageImg.src = source;
+            stageImg.alt = makeAlt(selectedIndex);
+            stageLink.href = source;
+            stageTitle.textContent = labels[selectedIndex];
+            counter.textContent = `${String(selectedIndex + 1).padStart(2, '0')} / ${String(images.length).padStart(2, '0')}`;
+            thumbnails.forEach((button, buttonIndex) => {
+              button.setAttribute('aria-pressed', String(buttonIndex === selectedIndex));
+            });
+          };
+          thumbnails.forEach((button) => button.addEventListener('click', () => show(Number(button.dataset.nxIndex))));
+          gallery.querySelector('[data-nx-prev]').addEventListener('click', () => show(selectedIndex - 1));
+          gallery.querySelector('[data-nx-next]').addEventListener('click', () => show(selectedIndex + 1));
         }
       }
 
