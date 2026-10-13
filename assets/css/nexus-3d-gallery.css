@@ -1,0 +1,30 @@
+/* Static GitHub Pages implementation of the Nexus 3D photo carousel. */
+main[data-project-detail] .nx-3d-gallery{display:block!important;margin-top:24px;min-width:0}
+.nx-3d-layout{border:1px solid rgba(215,255,224,.13);border-radius:20px;background:radial-gradient(ellipse at 50% 18%,#1a3026 0%,#0a120e 68%);overflow:hidden}
+.nx-3d-viewport{height:420px;position:relative;display:flex;justify-content:center;align-items:center;perspective:1100px;perspective-origin:center 48%;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none}
+.nx-3d-viewport:active{cursor:grabbing}
+.nx-3d-cylinder{position:relative;height:265px;width:290px;transform-style:preserve-3d;will-change:transform}
+.nx-3d-face{position:absolute;inset:0;width:100%;height:100%;padding:7px;border:1px solid rgba(207,255,227,.25);border-radius:15px;background:#09120f;box-shadow:0 18px 42px #000a;transform:rotateY(calc(var(--face) * var(--step))) translateZ(710px);backface-visibility:hidden;cursor:pointer}
+.nx-3d-face img{display:block;width:100%;height:100%;object-fit:contain;aspect-ratio:auto!important;background:#050907;border:0!important;border-radius:9px!important;pointer-events:none;transform:none!important}
+.nx-3d-face[aria-current="true"]{border-color:#9decc1;box-shadow:0 0 0 2px #6af8ae77,0 22px 54px #000c}
+.nx-3d-info{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 25px;background:#111c16;border-top:1px solid rgba(215,255,224,.08)}
+.nx-3d-eyebrow{font-size:10px;color:#81d9a6;font-weight:800;letter-spacing:.18em}
+.nx-3d-info h3{font-size:20px;margin:5px 0;color:#e9ffef}
+.nx-3d-info p{margin:0;color:#9eb5a7;font-size:12px}
+.nx-3d-actions{display:flex;align-items:center;gap:9px}
+.nx-3d-actions span{font-size:12px;color:#b5cabe;font-variant-numeric:tabular-nums;padding:0 5px}
+.nx-3d-actions button,.nx-3d-lightbox-head button{min-height:38px;min-width:38px;padding:7px 13px;border:1px solid rgba(215,255,224,.2);border-radius:10px;background:#203428;color:#e5ffec;cursor:pointer;font:inherit}
+.nx-3d-actions button:hover,.nx-3d-actions button:focus-visible,.nx-3d-lightbox-head button:hover{border-color:#87e3b1;background:#30503a}
+.nx-3d-strip{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;padding:15px 0 9px}
+.nx-3d-pick{flex:0 0 147px;scroll-snap-align:start;border:1px solid #304637;border-radius:11px;background:#121e17;padding:6px;color:#d5eedc;text-align:left;cursor:pointer}
+.nx-3d-pick[aria-pressed="true"]{border-color:#86e9b4;box-shadow:inset 0 0 0 1px #86e9b466}
+.nx-3d-pick img{display:block;width:100%;height:80px!important;aspect-ratio:16/9!important;object-fit:contain;background:#050907;border:0!important;border-radius:6px!important;transform:none!important}
+.nx-3d-pick span{display:block;font-size:11px;font-weight:700;padding:7px 3px 3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nx-3d-lightbox[hidden]{display:none!important}
+.nx-3d-lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;gap:14px}
+.nx-3d-lightbox-head{display:flex;align-items:center;justify-content:space-between;gap:24px;width:min(95vw,1500px);color:#ecfff2}
+.nx-3d-lightbox img{display:block;max-width:95vw;max-height:83vh;object-fit:contain;border-radius:10px}
+body.nx-modal-open{overflow:hidden}
+@media(max-width:900px){.nx-3d-viewport{height:340px}.nx-3d-cylinder{width:240px;height:215px}.nx-3d-face{transform:rotateY(calc(var(--face) * var(--step))) translateZ(590px)}}
+@media(max-width:600px){.nx-3d-viewport{height:310px;perspective:950px}.nx-3d-cylinder{width:210px;height:190px}.nx-3d-face{transform:rotateY(calc(var(--face) * var(--step))) translateZ(490px)}.nx-3d-info{padding:16px}.nx-3d-info h3{font-size:18px}.nx-3d-pick{flex-basis:122px}.nx-3d-pick img{height:66px!important}}
+@media(prefers-reduced-motion:reduce){.nx-3d-cylinder{transition:none!important}}
