@@ -242,24 +242,46 @@ window.portfolioData = {
     {
       id: "primeview-nexus",
       slug: "primeview-nexus",
-      title: "PrimeView Nexus",
-      shortDescription: "A connected work platform where the Nexus desktop agent handles time tracking while PrimeView Hub provides task and chat workflows.",
-      fullDescription: "An evolving PrimeView work platform separating the desktop time-tracking agent from Hub-based task and chat experiences while keeping source control, deployment, authentication, and production data boundaries clear.",
+      title: "PrimeView Nexus — Internal Operations Platform",
+      shortDescription: "A unified internal operations platform bringing together HR, workforce timekeeping, employee self-service, accounting, IT monitoring, and connected automation.",
+      fullDescription: "PrimeView Nexus is an evolving, role-based internal web platform for company operations. It brings employee self-service, workforce schedules and timekeeping, accounting review, subscription management, IT visibility, and operational dashboards into one connected workspace.",
       thumbnail: "assets/images/projects/client-portal.png",
       screenshots: ["assets/images/projects/client-portal.png"],
-      technologies: ["Windows", "REST API", "Authentication", "GitHub", "MariaDB/MySQL"],
-      category: "Internal Work Platform",
+      technologies: ["PHP", "MariaDB / MySQL", "JavaScript", "HTML / CSS", "RBAC", "REST APIs", "n8n", "Linux"],
+      category: "Full-Stack Internal Business Platform",
       status: "Ongoing",
-      problem: "Time tracking, internal communication, and task workflows need to feel connected without forcing all responsibilities into one application or duplicating identities.",
-      role: "Desktop time-tracker direction, Hub integration, authentication flow, application boundaries, APIs, deployment workflow, and operational architecture.",
-      implemented: ["PrimeView Nexus desktop time tracker", "PrimeView Hub task workspace", "PrimeView Hub chat workspace", "Hub-first identity flow", "Application API boundaries", "GitHub-managed source"],
-      features: ["Separated desktop and web responsibilities", "Shared work identity", "Task and chat in Hub", "Time tracking in Nexus", "Production data kept outside GitHub"],
-      architecture: "GitHub remains the source of truth for application code. PrimeView Hub hosts Task and Chat, PrimeView Nexus remains the desktop Time Tracker Agent, and production application data is stored on the production server in MariaDB/MySQL.",
-      automation: "Deployment and operational workflows are designed so code changes can be managed separately from production data and private configuration.",
-      security: "Production database credentials, SSH keys, private configuration, uploads, and database dumps must not be stored in GitHub.",
-      results: ["Clearer product boundaries", "GitHub-managed application source", "Production data separated from source control"]
-    }
-  ],
+      featured: true,
+      problem: "Staff, workforce, payroll, accounting, subscriptions, monitoring, and administrative workflows were spread across separate systems and manual processes, making access and reporting difficult to centralize.",
+      role: "Technical leadership, full-stack development, application architecture, server administration, authentication and permissions, internal workflow integrations, and production troubleshooting.",
+      implemented: [
+        "Unified login, session management, and role-based navigation",
+        "Command Center dashboard with workforce and system health visibility",
+        "Employee workspace, task calendar, and daily task tracking",
+        "Timekeeping dashboard, timesheets, schedules, and configurable flex/break rules",
+        "Payroll Review, payslip workflows, audit trail, and salary encryption foundation",
+        "Accounting software subscriptions and software assignment with GLPI integration",
+        "Domain, SSL, server-health, and endpoint security visibility integrations",
+        "Reusable UI controls, administrative modules, and access management"
+      ],
+      features: [
+        "Role-aware employee, HR, operations, and accounting workspaces",
+        "Workforce attendance and approved overtime calculations",
+        "Task tracking and Time Doctor integration work",
+        "Accounting-only payroll review and correction workflow",
+        "Auditability, permissions, and sensitive-data protection",
+        "GLPI and n8n-backed operational integrations",
+        "Desktop-focused admin dashboards and shared UI components"
+      ],
+      architecture: "A PHP and JavaScript application backed by MariaDB/MySQL runs on a managed Linux hosting environment. Authenticated users access permission-scoped modules, with selected GLPI, Time Doctor, and n8n integrations connecting operational workflows. Private runtime configuration and sensitive production data are kept separate from public web assets.",
+      automation: "Recurring monitoring and Bitdefender collection workflows integrate operational status into internal dashboards; n8n-based orchestration and proposed AI-assisted development remain ongoing work rather than completed capabilities.",
+      security: "Session timeouts, role-based authorization, record ownership, audit logging, and encrypted payroll data are part of the security approach. Internal URLs, server addresses, credentials, employee records, financial details, and source code are not published in this case study.",
+      results: [
+        "Consolidated multiple internal operations into one connected workspace",
+        "Built working modules for timekeeping, employee tasks, payroll review, and subscriptions",
+        "Established shared UI and permissions foundations for continued development",
+        "Improved visibility across workforce and selected IT operations"
+      ]
+    }  ],
   contact: {
     email: "ricordrgz8@gmail.com",
     location: "San Jose Del Monte, Bulacan, Philippines",
