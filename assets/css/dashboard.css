@@ -154,3 +154,27 @@
 @media(prefers-reduced-motion:reduce){
   .side-nav a{transition:none!important}
 }
+
+/* Neutral visual instead of an unverified production screenshot. */
+.project-cover-fallback{
+  position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  gap:10px;width:100%;height:100%;min-height:190px;padding:clamp(16px,3vw,35px);
+  box-sizing:border-box;overflow:hidden;color:#eaffef;
+  background:radial-gradient(circle at 88% 18%,rgba(215,255,224,.15),transparent 40%),linear-gradient(135deg,#14231a,#080c09 75%);
+  text-align:left;
+}
+.project-cover-fallback:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.25;
+  background-image:linear-gradient(rgba(215,255,224,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(215,255,224,.11) 1px,transparent 1px);
+  background-size:38px 38px;
+}
+.project-cover-fallback>*{position:relative;z-index:1;max-width:100%}
+.project-cover-fallback__kicker{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#b0d8b9}
+.project-cover-fallback strong{display:block;font-size:clamp(22px,3vw,42px);line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
+.project-cover-fallback__subtitle{font-size:11px;font-weight:600;color:#aabfaf;line-height:1.45}
+.project-detail-preview .project-cover-fallback{min-height:290px}
+.project-mini .project-cover-fallback{height:70px;min-height:70px;padding:9px;gap:4px}
+.project-mini .project-cover-fallback strong{font-size:14px;line-height:1}
+.project-mini .project-cover-fallback__kicker{font-size:7px}
+.project-mini .project-cover-fallback__subtitle{display:none}
+.home-projects-showcase__media .project-cover-fallback{min-height:100%;height:100%;aspect-ratio:16/9}
+@media(max-width:620px){.project-mini .project-cover-fallback{height:140px;min-height:140px;padding:18px}.project-mini .project-cover-fallback strong{font-size:22px}}
