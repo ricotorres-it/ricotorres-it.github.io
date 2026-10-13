@@ -194,12 +194,19 @@
 
   const statusClass = (status) => String(status).toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
+  const projectCover = (project, compact = false) => {
+    if (project.thumbnail) {
+      return `<img src="${base}${escapeHtml(project.thumbnail)}" alt="${escapeHtml(project.title)} project image" loading="lazy" decoding="async" width="720" height="405">`;
+    }
+    return `<div class="project-cover-fallback${compact ? ' project-cover-fallback--compact' : ''}" role="img" aria-label="${escapeHtml(project.title)} project cover"><span class="project-cover-fallback__kicker">PROJECT CASE STUDY</span><strong>${escapeHtml(project.coverTitle || project.title)}</strong><span class="project-cover-fallback__subtitle">${escapeHtml(project.coverSubtitle || project.category)}</span></div>`;
+  };
+
   const featured = $('[data-featured-projects]');
   if (featured) {
     featured.innerHTML = data.projects.filter((project) => project.featured).slice(0, 3).map((project) => `
       <article class="project-mini">
         <a href="${base}projects/${escapeHtml(project.slug)}/" aria-label="Open ${escapeHtml(project.title)} case study">
-          <img src="${base}${escapeHtml(project.thumbnail)}" alt="${escapeHtml(project.title)} screenshot" loading="lazy" decoding="async" width="720" height="405">
+          ${projectCover(project, true)}
           <div class="project-mini-body">
             <h4>${escapeHtml(project.title)}</h4>
             <p>${escapeHtml(project.shortDescription)}</p>
@@ -234,7 +241,7 @@
       <article>
         <a class="project-library-link" href="${base}projects/${escapeHtml(project.slug)}/" aria-label="View ${escapeHtml(project.title)} case study">
           <div class="project-thumb">
-            <img src="${base}${escapeHtml(project.thumbnail)}" alt="Sanitized ${escapeHtml(project.title)} interface" loading="lazy" decoding="async" width="720" height="405">
+            ${projectCover(project)}
             <span class="project-dots" aria-hidden="true"><i></i><i></i><i></i></span>
             <div class="project-badges">
               <span class="status-badge ${statusClass(project.status)}">${escapeHtml(project.status)}</span>
@@ -365,13 +372,17 @@
 
       const hero = $('[data-project-hero]');
       if (hero) {
-        const heroSource = project.screenshots[0] || project.thumbnail;
-        hero.src = `${base}${heroSource}`;
-        hero.alt = `Sanitized ${project.title} screenshot`;
-        hero.decoding = 'async';
-        hero.fetchPriority = 'high';
-        hero.width = 960;
-        hero.height = 540;
+        const heroSource = project.screenshots?.[0] || project.thumbnail;
+        if (heroSource) {
+          hero.src = `${base}${heroSource}`;
+          hero.alt = `${project.title} project image`;
+          hero.decoding = 'async';
+          hero.fetchPriority = 'high';
+          hero.width = 960;
+          hero.height = 540;
+        } else {
+          hero.outerHTML = projectCover(project);
+        }
       }
 
       const tags = $('[data-project-tags]');
@@ -387,7 +398,7 @@
       if (results) results.innerHTML = project.results.map((item) => `<div class="list-tile result-tile">${icon('check-circle')}<span>${escapeHtml(item)}</span></div>`).join('');
 
       const gallery = $('[data-project-gallery]');
-      if (gallery) gallery.innerHTML = project.screenshots.map((source, index) => `
+      if (gallery) gallery.innerHTML = (project.screenshots || []).map((source, index) => `
         <img src="${base}${escapeHtml(source)}" alt="Sanitized ${escapeHtml(project.title)} screenshot ${index + 1}" loading="lazy" decoding="async" width="960" height="540">`).join('');
 
       const facts = $('[data-project-facts]');
