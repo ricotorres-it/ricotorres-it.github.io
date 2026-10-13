@@ -245,24 +245,8 @@ window.portfolioData = {
       title: "PrimeView Nexus",
       shortDescription: "An internal web platform for employee self-service, HR, attendance and timesheet reviews, payroll, IT operations, and administration.",
       fullDescription: "PrimeView Nexus is a role-based internal business operations web application built for PrimeView. Its current modules cover employee workspaces, HR and leave requests, tasks and calendars, workforce timekeeping and reviews, payroll and payslips, IT assets and monitoring, software subscriptions, and system administration. The platform is actively maintained; features still awaiting QA or completion are distinguished from delivered modules.",
-      thumbnail: "assets/images/projects/nexus-command-center.svg",
-      screenshots: [
-        "assets/images/projects/nexus-command-center.svg",
-        "assets/images/projects/nexus-hr-leave.svg",
-        "assets/images/projects/nexus-timekeeping.svg",
-        "assets/images/projects/nexus-payroll.svg",
-        "assets/images/projects/nexus-it-monitoring.svg",
-        "assets/images/projects/nexus-system-access.svg"
-      ],
-      screenshotLabels: [
-        "Command Center",
-        "HR & Leave Management",
-        "Timekeeping Dashboard",
-        "Payroll & Payslips",
-        "IT Monitoring & Inventory",
-        "System Users & Access"
-      ],
-      screenshotsAreIllustrative: true,
+      thumbnail: "",
+      screenshots: [],
       coverTitle: "PRIMEVIEW NEXUS",
       coverSubtitle: "Internal Business Operations Platform",
       technologies: ["PHP", "JavaScript", "MariaDB / MySQL", "Linux / cPanel", "RBAC", "n8n"],
