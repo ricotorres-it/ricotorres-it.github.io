@@ -398,8 +398,19 @@
       if (results) results.innerHTML = project.results.map((item) => `<div class="list-tile result-tile">${icon('check-circle')}<span>${escapeHtml(item)}</span></div>`).join('');
 
       const gallery = $('[data-project-gallery]');
-      if (gallery) gallery.innerHTML = (project.screenshots || []).map((source, index) => `
-        <img src="${base}${escapeHtml(source)}" alt="Sanitized ${escapeHtml(project.title)} screenshot ${index + 1}" loading="lazy" decoding="async" width="960" height="540">`).join('');
+      if (gallery) {
+        const illustrative = Boolean(project.screenshotsAreIllustrative);
+        gallery.innerHTML = (project.screenshots || []).map((source, index) => {
+          const label = project.screenshotLabels?.[index] || `Interface view ${index + 1}`;
+          return `<figure class="nx-case-gallery-item">
+            <img src="${base}${escapeHtml(source)}" alt="${escapeHtml(project.title)} — ${escapeHtml(label)}${illustrative ? ' (conceptual illustration, not a live capture)' : ' screenshot'}" loading="lazy" decoding="async" width="1600" height="900">
+            <figcaption><strong>${escapeHtml(label)}</strong>${illustrative ? '<span>Illustrative UI • Sample data</span>' : ''}</figcaption>
+          </figure>`;
+        }).join('');
+        if (illustrative) {
+          gallery.insertAdjacentHTML('beforebegin', '<p class="nx-gallery-disclaimer">Conceptual interface previews based on documented Nexus modules. These are illustrations with fictional sample data, not screenshots from the live application.</p>');
+        }
+      }
 
       const facts = $('[data-project-facts]');
       if (facts) facts.innerHTML = `
