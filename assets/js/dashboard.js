@@ -181,10 +181,14 @@
   const stats = $('[data-stats]');
   if (stats) {
     stats.innerHTML = data.stats.map((item) => `
-      <div class="stat" title="${escapeHtml(item.note)}">
+      <a class="stat stat-link" href="${escapeHtml(assetUrl(item.href || 'projects/'))}"
+         title="${escapeHtml(item.note)}"
+         aria-label="${escapeHtml(item.value + ' ' + item.label + '. ' + item.note)}">
+        <span class="stat-icon" aria-hidden="true">${icon(item.icon || 'squares-four')}</span>
         <strong>${escapeHtml(item.value)}</strong>
-        <span>${escapeHtml(item.label)}</span>
-      </div>`).join('');
+        <span class="stat-label">${escapeHtml(item.label)}</span>
+        <span class="stat-link-arrow" aria-hidden="true">${icon('arrow-right')}</span>
+      </a>`).join('');
   }
 
   const specialties = $('[data-specialties]');
