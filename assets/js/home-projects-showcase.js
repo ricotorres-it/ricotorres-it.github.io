@@ -9,6 +9,8 @@
   const projects = data.projects.filter((project) => project.featured).slice(0, 3);
   const items = projects.length ? projects : data.projects.slice(0, 3);
   if (!items.length) return;
+  const singleProject = items.length === 1;
+  mount.dataset.singleProject = String(singleProject);
 
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -28,21 +30,21 @@
   const projectImage = (project) => `${base}${project.thumbnail}`;
 
   // Duplicate the full set so the upward motion can wrap without a visible jump.
-  const slides = [...items, ...items];
+  const slides = singleProject ? items : [...items, ...items];
 
   mount.innerHTML = `
     <div class="home-projects-showcase__inner">
       <div class="home-projects-showcase__copy">
-        <p class="home-projects-showcase__label"><span class="home-projects-showcase__folder" aria-hidden="true"></span><span>PROJECTS</span></p>
-        <p class="home-projects-showcase__description">Funnels, workflows and apps built to solve real problems.</p>
+        <p class="home-projects-showcase__label"><span class="home-projects-showcase__folder" aria-hidden="true"></span><span>${singleProject ? 'FEATURED PROJECT' : 'PROJECTS'}</span></p>
+        <p class="home-projects-showcase__description">${singleProject ? 'PrimeView Nexus unifies HR, timekeeping, payroll, and IT operations.' : 'Funnels, workflows and apps built to solve real problems.'}</p>
         <div class="home-projects-showcase__active" aria-live="polite">
           <strong data-home-project-title></strong>
           <span data-home-project-category></span>
         </div>
-        <a class="home-projects-showcase__link" href="projects/">View All Projects →</a>
+        <a class="home-projects-showcase__link" href="${singleProject ? projectUrl(items[0]) : `${base}projects/`}">${singleProject ? 'Explore Nexus Case Study →' : 'View All Projects →'}</a>
       </div>
       <div class="home-projects-showcase__stage">
-        <div class="home-projects-showcase__viewport" data-home-project-viewport tabindex="0" aria-label="Continuously scrolling featured project previews. Hover or focus to pause. Use arrow keys to change project.">
+        <div class="home-projects-showcase__viewport" data-home-project-viewport tabindex="0" aria-label="${singleProject ? 'PrimeView Nexus screenshot preview. Activate the preview to open the case study.' : 'Continuously scrolling featured project previews. Hover or focus to pause. Use arrow keys to change project.'}">
           <div class="home-projects-showcase__track" data-home-project-track>
             ${slides.map((project, index) => {
               const duplicate = index >= items.length;
@@ -62,7 +64,7 @@
           </div>
         </div>
       </div>
-      <span class="home-projects-showcase__progress" aria-hidden="true"><span data-home-project-progress></span></span>
+      ${singleProject ? '' : '<span class="home-projects-showcase__progress" aria-hidden="true"><span data-home-project-progress></span></span>'}
     </div>`;
 
   const viewport = mount.querySelector('[data-home-project-viewport]');
@@ -177,7 +179,7 @@
 
   setMeta(0);
   render();
-  frameId = requestAnimationFrame(tick);
+  if (!singleProject) frameId = requestAnimationFrame(tick);
 
   window.addEventListener('pagehide', () => {
     if (frameId) cancelAnimationFrame(frameId);
