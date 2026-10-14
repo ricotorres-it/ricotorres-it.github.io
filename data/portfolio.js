@@ -21,10 +21,34 @@ window.portfolioData = {
     specialties: ["System Administration", "Web Hosting", "IT Automation", "Web Development"]
   },
   stats: [
-    { value: "~90%", label: "Less manual IT checking", note: "Recurring checks reduced through automation and GLPI-based workflows." },
-    { value: "6", label: "Project case studies", note: "Detailed public case studies currently documented in the portfolio." },
-    { value: "9", label: "Operational system areas", note: "Monitoring, access, domains, endpoints, subscriptions, servers, inventory and recurring checks." },
-    { value: "50+", label: "Support requests / day", note: "Handled in a Tier 1 technical support environment." }
+    {
+      value: "568",
+      label: "Domains in Inventory",
+      note: "Domain Manager inventory shown in the October 2026 Nexus screenshot; snapshot, not a live count.",
+      icon: "globe-simple",
+      href: "projects/domain-manager/"
+    },
+    {
+      value: "52",
+      label: "IT Assets Tracked",
+      note: "Asset Inventory total shown in the October 2026 Nexus screenshot; snapshot, not a live count.",
+      icon: "hard-drives",
+      href: "projects/primeview-nexus/"
+    },
+    {
+      value: "21",
+      label: "Security Endpoints",
+      note: "Bitdefender device total shown in the October 2026 Nexus screenshot; snapshot, not a live count.",
+      icon: "shield-check",
+      href: "projects/primeview-nexus/"
+    },
+    {
+      value: "6",
+      label: "Project Case Studies",
+      note: "Six published project case studies in this portfolio.",
+      icon: "squares-four",
+      href: "projects/"
+    }
   ],
   about: {
     intro: "I am a production-focused IT professional who works across systems administration, web hosting, infrastructure operations, automation, monitoring, technical support, and internal platform workflows.",
