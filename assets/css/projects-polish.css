@@ -383,3 +383,64 @@ main[data-project-detail] .nx-real-gallery.nx-showcase{display:block!important;m
 .nx-showcase-thumb span{display:block;padding:8px 6px 4px;font-size:12px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media(max-width:850px){.nx-showcase-thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:560px){.nx-showcase-thumbs{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.nx-showcase-bottom{align-items:flex-start;padding:13px;flex-wrap:wrap}.nx-showcase-full{min-height:140px}.nx-showcase-caption strong{font-size:14px}}
+
+/* Consolidated portfolio: one full-width Nexus case study, not six duplicate cards. */
+.project-library.project-library--single {
+  grid-template-columns:minmax(0,1fr)!important;
+  width:100%;
+  max-width:1260px;
+  margin-inline:auto;
+}
+.project-library--single > article .project-library-link {
+  display:grid;
+  grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  align-items:stretch;
+  height:100%;
+}
+.project-library--single > article .project-thumb {
+  height:100%;
+  min-height:340px;
+  aspect-ratio:auto;
+  border-right:1px solid rgba(215,255,224,.11)!important;
+  border-bottom:0!important;
+}
+.project-library--single > article .project-thumb img {
+  display:block;
+  width:100%;
+  height:100%!important;
+  object-fit:contain;
+  object-position:center center;
+  background:#060906;
+}
+.project-library--single > article .body {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-width:0;
+  padding:clamp(22px,3vw,42px)!important;
+}
+.project-library--single > article .body h2 {
+  font-size:clamp(25px,2.2vw,36px)!important;
+  line-height:1.15!important;
+}
+.project-library--single > article .body p {
+  font-size:clamp(12px,1vw,14px)!important;
+  max-width:54ch;
+}
+.project-library--single > article .project-card-action { margin-top:clamp(18px,3vw,40px)!important; }
+.project-navigation.project-navigation--single {grid-template-columns:minmax(0,1fr);max-width:420px;margin-inline:auto}
+.project-navigation--single [data-prev-project],
+.project-navigation--single [data-next-project] {display:none!important}
+@media(max-width:860px) {
+  .project-library--single > article .project-library-link {grid-template-columns:minmax(0,1fr)}
+  .project-library--single > article .project-thumb {
+    height:auto;
+    min-height:0;
+    aspect-ratio:16/9;
+    border-right:0!important;
+    border-bottom:1px solid rgba(215,255,224,.11)!important;
+  }
+  .project-library--single > article .project-thumb img {height:100%!important;object-fit:contain}
+  .project-library--single > article .body {padding:clamp(19px,4vw,26px)!important}
+  .project-library--single > article .body h2 {font-size:clamp(23px,4vw,31px)!important}
+}
