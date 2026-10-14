@@ -272,3 +272,17 @@
   .home-projects-showcase__media img,
   .home-projects-showcase__browser{transition:none!important}
 }
+
+/* One consolidated case study: use a stable preview, not a self-looping carousel. */
+.home-projects-showcase[data-single-project="true"] .home-projects-showcase__media img {
+  object-fit:contain;
+  object-position:center top;
+  background:#08120e;
+}
+.home-projects-showcase[data-single-project="true"] .home-projects-showcase__track {
+  will-change:auto;
+  transform:none!important;
+}
+.home-projects-showcase[data-single-project="true"] .home-projects-showcase__progress {
+  display:none;
+}
