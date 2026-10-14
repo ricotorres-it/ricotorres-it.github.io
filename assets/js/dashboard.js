@@ -241,6 +241,7 @@
 
   const projectLibrary = $('[data-project-library]');
   if (projectLibrary) {
+    projectLibrary.classList.toggle('project-library--single', data.projects.length === 1);
     projectLibrary.innerHTML = data.projects.map((project) => `
       <article>
         <a class="project-library-link" href="${base}projects/${escapeHtml(project.slug)}/" aria-label="View ${escapeHtml(project.title)} case study">
@@ -421,18 +422,25 @@
       const next = data.projects[(projectIndex + 1) % data.projects.length];
       const previousLink = $('[data-prev-project]');
       const nextLink = $('[data-next-project]');
-      if (previousLink) {
-        previousLink.href = `${base}projects/${previous.slug}/`;
-        previousLink.innerHTML = `${icon('arrow-left')}<span><span class="project-nav-label">Previous project</span><span class="project-nav-title">${escapeHtml(previous.title)}</span></span>`;
-        previousLink.setAttribute('aria-label', `Previous project: ${previous.title}`);
-      }
-      if (nextLink) {
-        nextLink.href = `${base}projects/${next.slug}/`;
-        nextLink.innerHTML = `<span><span class="project-nav-label">Next project</span><span class="project-nav-title">${escapeHtml(next.title)}</span></span>${icon('arrow-right')}`;
-        nextLink.setAttribute('aria-label', `Next project: ${next.title}`);
+      const singleProject = data.projects.length === 1;
+      $('.project-navigation')?.classList.toggle('project-navigation--single', singleProject);
+      if (singleProject) {
+        previousLink?.remove();
+        nextLink?.remove();
+      } else {
+        if (previousLink) {
+          previousLink.href = `${base}projects/${previous.slug}/`;
+          previousLink.innerHTML = `${icon('arrow-left')}<span><span class="project-nav-label">Previous project</span><span class="project-nav-title">${escapeHtml(previous.title)}</span></span>`;
+          previousLink.setAttribute('aria-label', `Previous project: ${previous.title}`);
+        }
+        if (nextLink) {
+          nextLink.href = `${base}projects/${next.slug}/`;
+          nextLink.innerHTML = `<span><span class="project-nav-label">Next project</span><span class="project-nav-title">${escapeHtml(next.title)}</span></span>${icon('arrow-right')}`;
+          nextLink.setAttribute('aria-label', `Next project: ${next.title}`);
+        }
       }
       const allProjects = $('.project-nav-index');
-      if (allProjects) allProjects.innerHTML = `${icon('squares-four')}<span>All Projects</span>`;
+      if (allProjects) allProjects.innerHTML = `${icon('squares-four')}<span>${singleProject ? 'Back to Projects' : 'All Projects'}</span>`;
     }
   }
 
