@@ -26,7 +26,7 @@ window.portfolioData = {
       label: "Domains in Inventory",
       note: "Domain Manager inventory shown in the October 2026 Nexus screenshot; snapshot, not a live count.",
       icon: "globe-simple",
-      href: "projects/domain-manager/"
+      href: "projects/primeview-nexus/"
     },
     {
       value: "52",
